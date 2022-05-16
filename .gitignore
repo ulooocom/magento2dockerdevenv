@@ -42,8 +42,11 @@ docker-compose.dev.yml
 !.docker/nginx/etc/conf.d/php73_demo.conf
 !.docker/nginx/etc/conf.d/php73_fastcgi_backend.conf
 !.docker/nginx/etc/conf.d/magento2modules.local.ulooo.com.conf
+!.docker/nginx/etc/conf.d/fastcgi_backend.conf
+
+.docker/nginx/etc/conf.d/magento
 !.docker/nginx/etc/conf.d/magento/magento2modules.nginx.conf.sample
 !.docker/nginx/etc/conf.d/magento/php73.nginx.conf.sample
-!.docker/nginx/etc/conf.d/fastcgi_backend.conf
 !.docker/nginx/etc/conf.d/magento/php74.nginx.conf.sample
+!.docker/nginx/etc/conf.d/magento/php81.nginx.conf.sample
 
