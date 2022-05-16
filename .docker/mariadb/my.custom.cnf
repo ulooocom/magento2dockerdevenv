@@ -1,0 +1,26 @@
+[client]
+#default-character-set=utf8
+default-character-set=utf8mb4
+
+[mysql]
+#default-character-set=utf8
+default-character-set=utf8mb4
+
+[mysqld]
+max_allowed_packet=128M
+# slow log
+slow_query_log=1   # whether open mysql slow log, 1 means enable, 0 means disable
+long_query_time=1
+slow_query_log_file=/var/log/mysql/slow.log
+log_queries_not_using_indexes=1
+log_throttle_queries_not_using_indexes=10
+
+#for fulltext search
+ft_min_word_len = 1
+innodb_ft_min_token_size = 1
+
+#timeout
+innodb_lock_wait_timeout=600
+lock_wait_timeout=1800
+wait_timeout=600
+interactive_timeout=600

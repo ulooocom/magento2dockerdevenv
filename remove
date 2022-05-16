@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+set -aeuo pipefail
+source ./.env
+
+echo "rm all marked files"
+rm  -rf ./.docker/*.flag
+rm  -rf ./.docker/*.txt
+
+echo "stop modules and remove images"
+./docker-compose down --rmi local --volumes
+
+echo 'docker image ls -q'
+echo "***************************"
+docker images ls -q
+echo "***************************"
+echo 'docker container ls -q'
+echo "***************************"
+docker container ls -q
+echo "***************************"
+echo 'docker volume ls -q'
+echo "***************************"
+docker volume ls -q
+echo "***************************"
+
+# remove all images
+{
+    echo 'First Step: remove all images'
+    docker rmi -f $(docker images -q) 2> /dev/null
+} || {
+    # save log for exception
+    echo "Try to remove images failed."
+}
+
+{  #try
+    echo 'Second Step: remove all containers'
+    docker container rm -f $(docker container ls -q) 2> /dev/null
+} || {  #catch
+    echo "all containers were removed."
+}
+
+# don't remove all volume anymore
+{  #try
+    echo 'Third Step : remove all volumes'
+    #docker volume rm $(docker volume ls -q)
+    docker volume rm -f $(docker volume ls -q) 2> /dev/null
+} || {  #catch
+    # save log for exception
+    echo "all volumes were removed."
+}
+
+{ # try
+    docker stop $(docker ps -a | grep "Exited" | awk '{print $1 }')  2> /dev/null
+} || { # catch
+    # save log for exception
+    echo "all exited containers were stopped."
+}
+
+{ # try
+    docker rm $(docker ps -a | grep "Exited" | awk '{print $1 }')  2> /dev/null
+} || { # catch
+    # save log for exception
+    echo "all exited containers were removed."
+}
+echo '&&&&&'
+echo "Checking Start"
+echo '&&&&&'
+echo "docker image ls -q"
+echo "***************************"
+docker image ls
+echo "***************************"
+echo "docker container ls -q"
+echo "***************************"
+docker container ls -q
+echo "***************************"
+echo "docker volume ls -q"
+echo "***************************"
+docker volume ls -q
+echo "***************************"
+echo '&&&&&'
+echo "Checking End"
+echo '&&&&&'

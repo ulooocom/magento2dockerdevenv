@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+set -aeuo pipefail
+
+source ./.env
+
+echo "rm all marked files"
+rm  -rf ./.docker/*.flag
+rm  -rf ./.docker/*.txt
+
+echo "stop containers"
+./docker-compose down --rmi local
+echo 'docker image ls -q'
+echo "***************************"
+docker images ls -q
+echo "***************************"
+echo 'docker container ls -q'
+echo "***************************"
+docker container ls -q
+echo "***************************"
+echo 'docker volume ls -q'
+echo "***************************"
+docker volume ls -q
+echo "***************************"
+
+{ # try
+    echo 'Second Step: remove all containers'
+    docker container rm -f $(docker container ls -q) 2> /dev/null
+} || { # catch
+    echo "Try to remove containers failed."
+}
+
+{ # try
+    docker stop $(docker ps -a | grep "Exited" | awk '{print $1 }')  2> /dev/null
+} || { # catch
+    # save log for exception
+    echo "Try to stop all container failed."
+}
+
+{ # try
+    docker rm $(docker ps -a | grep "Exited" | awk '{print $1 }')  2> /dev/null
+} || { # catch
+    # save log for exception
+    echo "Try to remove all container failed."
+}
+
+echo "docker image ls -q"
+docker image ls
+echo "***************************"
+echo "docker container ls -q"
+docker container ls -q
+echo "***************************"
+echo "docker volume ls -q"
+docker volume ls -q

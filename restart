@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -aeuo pipefail
+
+if [ ! $USER ]; then
+    echo "USER is empty"
+    USER='guest'
+fi
+
+date
+source ./.env
+./docker-compose up --force-recreate

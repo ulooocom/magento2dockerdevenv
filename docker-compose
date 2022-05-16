@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -aeuo pipefail
+
+# create the dotenv file if it doesn't exist
+if [ ! -f .env ]; then
+  cp .env.default .env
+fi
+
+source .env
+#VERSION=$(cat VERSION)
+NO_DEV=0
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --no-dev)
+            NO_DEV=1
+            shift 1
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
+
+FILES="-f ./docker-compose.yml"
+# Find docker-compose.yml files first and then add docker-compose.*.yml files to override
+# FILES="${FILES} $(find ./.docker -maxdepth 1 -name "docker-compose.yml" -exec echo "-f {} " \;)"
+if [ "${NO_DEV}" -eq 0 ]; then
+    #FILES="${FILES} $(find ./.docker -maxdepth 1 -name "docker-compose.*.yml" -exec echo "-f {} " \;)"
+    FILES="-f ./docker-compose.dev.yml"
+fi
+docker-compose $FILES build
+docker-compose $FILES $@
