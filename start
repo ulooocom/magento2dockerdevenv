@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
-
-if [ ! $USER ]; then
-    echo "USER is empty"
-    USER='guest'
-fi
-
 set -aeuo pipefail
-date
 
 echo "try to add +x rights for : chmod +x ./stop ./start ./restart ./remove ./go ./upgrade ./docker-compose";
 chmod +x ./stop ./start ./restart ./remove ./go ./upgrade ./docker-compose
@@ -40,8 +33,6 @@ echo "***************************"
 docker volume ls
 echo "***************************"
 
-time=`date +%H:%M:%S`
-echo $USER " @ " $time
 
 echo "starting containers"
 echo "***************************"

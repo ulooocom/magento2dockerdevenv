@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-set -aeuo pipefail
 
-USER=`whoami`
+set -aeuo pipefail
 
 echo "Run Tips:"
 echo "********************************************************************"
@@ -10,7 +9,7 @@ echo "********************************************************************"
 
 ## whether skipped magento build
 #echo SKIPPED_MAGENTO_BUILD_ACTION $1
-if [ -n "$1" ]
+if [ $# -ge 1 ] && [ -n "$1" ]
 then
     CONTAINER_NAME=$1
     echo "********************************************************************"
@@ -38,25 +37,25 @@ fi
 
 case ${CONTAINER_NAME} in
  s|sshd)
-        docker exec -ti mage_local_sshd /bin/sh -l
+        docker exec -ti mage_local_sshd sh -l
         ;;
  php73)
-        docker exec -ti mage_local_php73_fpm /bin/sh -l
+        docker exec -ti mage_local_php73_fpm sh -l
         ;;
  php7.3)
-        docker exec -ti mage_local_php73_fpm /bin/sh -l
+        docker exec -ti mage_local_php73_fpm sh -l
         ;;
  php74)
-        docker exec -ti mage_local_php_fpm /bin/sh -l
+        docker exec -ti mage_local_php_fpm sh -l
         ;;
  php7.4)
-        docker exec -ti mage_local_php_fpm /bin/sh -l
+        docker exec -ti mage_local_php_fpm sh -l
         ;;
  php81)
-       docker exec -ti mage_local_php81_fpm /bin/sh -l
+       docker exec -ti mage_local_php81_fpm sh -l
        ;;
  php8.1)
-         docker exec -ti mage_local_php81_fpm /bin/sh -l
+         docker exec -ti mage_local_php81_fpm sh -l
          ;;
  nginx)
          docker exec -ti mage_local_nginx sh

@@ -3,10 +3,6 @@ set -aeuo pipefail
 
 source ./.env
 
-echo "rm all marked files"
-rm  -rf ./.docker/*.flag
-rm  -rf ./.docker/*.txt
-
 echo "stop containers"
 ./docker-compose down --rmi local
 echo 'docker image ls -q'
