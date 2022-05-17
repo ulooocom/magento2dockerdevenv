@@ -10,26 +10,33 @@ rm  -rf ./.docker/*.txt
 echo "stop modules and remove images"
 ./docker-compose down --rmi local --volumes
 
-echo 'docker image ls -q'
+echo 'docker images ls -q '
 echo "***************************"
 docker images ls -q
 echo "***************************"
-echo 'docker container ls -q'
+echo 'docker container ls -q '
 echo "***************************"
 docker container ls -q
 echo "***************************"
-echo 'docker volume ls -q'
-echo "***************************"
-docker volume ls -q
-echo "***************************"
+
+
+{  #try
+    echo 'docker volume ls -q | grep '${COMPOSE_PROJECT_NAME}
+    echo "***************************"
+    docker volume ls -q | grep ${COMPOSE_PROJECT_NAME}
+    echo "***************************"
+} || {  #catch
+    # do nothing here.
+    echo ''
+}
 
 # remove all images
 {
-    echo 'First Step: remove all images'
-    docker rmi -f $(docker images -q) 2> /dev/null
+    echo 'First Step: remove all image'
+    docker rmi -f $(docker image ls -q) 2> /dev/null
 } || {
     # save log for exception
-    echo "Try to remove images were finished."
+    echo "Try to remove all images were finished."
 }
 
 {  #try
@@ -40,34 +47,43 @@ echo "***************************"
 }
 
 # don't remove all volume anymore
-{  #try
-    echo 'Third Step : remove all volumes'
-    #docker volume rm $(docker volume ls -q)
-    docker volume rm -f $(docker volume ls -q) 2> /dev/null
-} || {  #catch
+if [ ${ONLY_DELETE_CURRENT_PROJECT_VOLUME} == true ]; then
+    {  #try
+        echo 'Third Step : remove all current project volumes'
+        docker volume rm -f $(docker volume ls -q | grep ${COMPOSE_PROJECT_NAME}) 2> /dev/null
+    } || {  #catch
+        # save log for exception
+        echo "all current project volumes were removed."
+    }
+else
+    {  #try
+        echo 'Third Step : remove all volumes'
+        docker volume rm -f $(docker volume ls -q ) 2> /dev/null
+    } || {  #catch
+        # save log for exception
+        echo "all volumes were removed."
+    }
+fi
+
+{ # try
+    docker stop $(docker ps -a | grep ${COMPOSE_PROJECT_NAME} | grep "Exited" | awk '{print $1 }')  2> /dev/null
+} || { # catch
     # save log for exception
-    echo "all volumes were removed."
+    echo "all current project exited containers were stopped."
 }
 
 { # try
-    docker stop $(docker ps -a | grep "Exited" | awk '{print $1 }')  2> /dev/null
+    docker rm $(docker ps -a | grep ${COMPOSE_PROJECT_NAME} | grep "Exited" | awk '{print $1 }')  2> /dev/null
 } || { # catch
     # save log for exception
-    echo "all exited containers were stopped."
-}
-
-{ # try
-    docker rm $(docker ps -a | grep "Exited" | awk '{print $1 }')  2> /dev/null
-} || { # catch
-    # save log for exception
-    echo "all exited containers were removed."
+    echo "all current project exited containers were removed."
 }
 echo '&&&&&'
 echo "Checking Start"
 echo '&&&&&'
 echo "docker image ls -q"
 echo "***************************"
-docker image ls
+docker image ls -q
 echo "***************************"
 echo "docker container ls -q"
 echo "***************************"
