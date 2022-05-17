@@ -14,7 +14,7 @@ fi
 pwd
 source ./.env
 
-#docker-compose.dev.yml
+#try to create docker-compose.dev.yml if not
 if [ ! -f docker-compose.dev.yml ]; then
   if [ ${NUXT_JS_PROJ} == true ]; then
     cp docker-compose.dev.yml.full.sample docker-compose.dev.yml
@@ -32,7 +32,6 @@ echo 'docker volume ls'
 echo "***************************"
 docker volume ls
 echo "***************************"
-
 
 echo "starting containers"
 echo "***************************"

@@ -37,49 +37,34 @@ fi
 
 case ${CONTAINER_NAME} in
  s|sshd)
-        docker exec -ti mage_local_sshd sh -l
+       docker exec -ti mage_local_sshd sh -l
         ;;
- php73)
-        docker exec -ti mage_local_php73_fpm sh -l
+ php73|php7.3)
+       docker exec -ti mage_local_php73_fpm sh -l
         ;;
- php7.3)
-        docker exec -ti mage_local_php73_fpm sh -l
+ php74|php7.4)
+       docker exec -ti mage_local_php_fpm sh -l
         ;;
- php74)
-        docker exec -ti mage_local_php_fpm sh -l
-        ;;
- php7.4)
-        docker exec -ti mage_local_php_fpm sh -l
-        ;;
- php81)
+ php81|php8.1)
        docker exec -ti mage_local_php81_fpm sh -l
-       ;;
- php8.1)
-         docker exec -ti mage_local_php81_fpm sh -l
-         ;;
+        ;;
  nginx)
-         docker exec -ti mage_local_nginx sh
-         ;;
- mysql57)
-        docker exec -ti mage_local_mysql57 sh
+       docker exec -ti mage_local_nginx sh
         ;;
- mysql5.7)
-         docker exec -ti mage_local_mysql57 sh
-         ;;
- mysql80)
-        docker exec -ti mage_local_mysql sh
+ mysql57|mysql5.7)
+       docker exec -ti mage_local_mysql57 sh
         ;;
- mysql8.0)
-         docker exec -ti mage_local_mysql sh
-         ;;
+ mysql80|mysql8.0)
+       docker exec -ti mage_local_mysql sh
+        ;;
  mariadb)
-          docker exec -ti mage_local_mariadb sh
-          ;;
+       docker exec -ti mage_local_mariadb sh
+        ;;
  redis)
-          docker exec -ti mage_local_redis sh
-          ;;
+       docker exec -ti mage_local_redis sh
+        ;;
  *)
-        echo "Warning, Usage: sh ./go ${CONTAINER_NAME} [sshd|php73|php7.3|php74|php7.4|php81|php8.1|nginx|mysql57|mysql5.7|mysql80|mysql8.0|mariadb|redis]"
-        exit 1
+       echo "Warning, Usage: sh ./go ${CONTAINER_NAME} [sshd|php73|php7.3|php74|php7.4|php81|php8.1|nginx|mysql57|mysql5.7|mysql80|mysql8.0|mariadb|redis]"
+       exit 1
         ;;
 esac

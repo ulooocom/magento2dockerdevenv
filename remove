@@ -29,7 +29,7 @@ echo "***************************"
     docker rmi -f $(docker images -q) 2> /dev/null
 } || {
     # save log for exception
-    echo "Try to remove images failed."
+    echo "Try to remove images were finished."
 }
 
 {  #try
