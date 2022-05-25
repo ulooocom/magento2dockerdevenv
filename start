@@ -16,8 +16,16 @@ source ./.env
 
 #try to create docker-compose.dev.yml if not
 if [ ! -f docker-compose.dev.yml ]; then
-  if [ ${NUXT_JS_PROJ} == true ]; then
+  if [ ${RUN_TYPE} == 'FULL' ]; then
     cp docker-compose.dev.yml.full.sample docker-compose.dev.yml
+  elif [ ${RUN_TYPE} == 'SIMPLE' ]; then
+    cp docker-compose.dev.yml.simple.sample docker-compose.dev.yml
+    if [ -f .docker/nginx/etc/conf.d/php73_fastcgi_backend.conf ]; then
+      mv .docker/nginx/etc/conf.d/php73_fastcgi_backend.conf .docker/nginx/etc/conf.d/php73_fastcgi_backend.conf.sample
+    fi
+    if [ -f .docker/nginx/etc/conf.d/php73_demo.conf ]; then
+      mv .docker/nginx/etc/conf.d/php73_demo.conf .docker/nginx/etc/conf.d/php73_demo.conf.sample
+    fi
   else
     cp docker-compose.dev.yml.sample docker-compose.dev.yml
   fi
