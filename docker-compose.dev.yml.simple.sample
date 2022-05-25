@@ -1,6 +1,4 @@
-# download docker for windows 10 : http://mirrors.aliyun.com/docker-toolbox/windows/docker-for-windows/stable/
-# downlaod docker for mac: http://mirrors.aliyun.com/docker-toolbox/mac/docker-for-mac/?spm=5176.8351553.0.0.bbe41991kmM8fG
-
+# download docker desktop : https://www.docker.com/products/docker-desktop/
 version: "3.1"
 services:
 
