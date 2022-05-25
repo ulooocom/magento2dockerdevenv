@@ -59,11 +59,6 @@ cnpm -v
 #cnpm@7.1.1 (/usr/local/lib/node_modules/cnpm/lib/parse_argv.js)
 apidoc -v
 #apidoc version: 0.51.1
-cd /home/www-data/deployScripts/releaseShell
-chmod +x *.sh
-sh ./deployCodes.sh 
-sh ./simpleDeployCodes.sh
-# release shell
 ifconfig -a
 # net-tools
 ipaddr
