@@ -168,8 +168,8 @@ services:
       - ./.docker/elasticsearch-head/config/Gruntfile.js:/usr/src/app/Gruntfile.js:ro
 
   sshd:
-    #image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-php-8.1 #pick one for yourself
-    image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-php7.4.29-go
+    #image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-php-8.1.6 #pick one for yourself
+    image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-php-7.4.29
     container_name: ${COMPOSE_PROJECT_NAME}_sshd
     ports:
       - "2222:22"
