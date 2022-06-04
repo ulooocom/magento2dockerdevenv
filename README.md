@@ -72,28 +72,28 @@ drill baidu.com
 ```
 
 ### 11. PHP7.3.27
-```http request
+```shell
 http://localhost:7300/
 ```
 
 ### 12. PHP7.4.28
-```http request
+```shell
 http://localhost:7400/
 ```
 
 ### 13. PHP8.1.5
-```http request
+```shell
 http://localhost:8100/
 ```
 
 ### 14. ADMINER
-```http request
+```shell
 http://localhost:8899/ #root user : root ; password : fusc
 #visit mysql8.0, sever name : mysql
 #visit mysql5.7, sever name : mysql57
 #visit mariadb, sever name : mariadb
 ```
 ### 15. ES HEAD
-```http request
+```shell
 http://localhost:9100/ # check ES data
 ```
