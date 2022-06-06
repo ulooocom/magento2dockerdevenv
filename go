@@ -13,12 +13,12 @@ if [ $# -ge 1 ] && [ -n "$1" ]
 then
     CONTAINER_NAME=$1
     echo "********************************************************************"
-    echo "Confimred. Try to log go this container : "${CONTAINER_NAME}
+    echo "Confirmed. Try to log go this container : "${CONTAINER_NAME}
     echo "********************************************************************"
 else
     CONTAINER_NAME='sshd'
     echo "********************************************************************"
-    echo "Confimred. Try to log go the default container : "${CONTAINER_NAME}
+    echo "Confirmed. Try to log go the default container : "${CONTAINER_NAME}
     echo "********************************************************************"
 fi
 
