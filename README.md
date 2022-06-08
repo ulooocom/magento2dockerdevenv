@@ -35,7 +35,10 @@ sudo apt install docker-compose # if you install docker-desktop, it will be adde
 
 ### 9. log in to container
 ```
+# mac&linux
 sh ./go [sshd|php73|php7.3|php74|php7.4|php81|php8.1|nginx|mysql57|mysql5.7|mysql80|mysql8.0|mariadb|redis]
+# windows
+sh ./wingo [sshd|php73|php7.3|php74|php7.4|php81|php8.1|nginx|mysql57|mysql5.7|mysql80|mysql8.0|mariadb|redis]
 ```
 
 ### 10. sshd
