@@ -53,5 +53,5 @@ server {
     }
 
     # need add this magento 2 project nginx.conf.sample file here
-    #include /data/www/magento243p2studyDemo/nginx.conf.sample;
+    include /data/www/magento243p2studyDemo/nginx.conf.sample;
 }
