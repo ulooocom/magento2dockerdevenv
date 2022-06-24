@@ -34,6 +34,7 @@ fi
 #mage_local_mariadb
 #mage_local_es_head
 #mage_local_es
+#mage_local_sshd_ubuntu
 
 case ${CONTAINER_NAME} in
  s|sshd)
@@ -62,6 +63,9 @@ case ${CONTAINER_NAME} in
         ;;
  redis)
        docker exec -ti mage_local_redis sh
+        ;;
+ ubuntu)
+       docker exec -ti mage_local_sshd_ubuntu sh
         ;;
  *)
        echo "Warning, Usage: sh ./go ${CONTAINER_NAME} [sshd|php73|php7.3|php74|php7.4|php81|php8.1|nginx|mysql57|mysql5.7|mysql80|mysql8.0|mariadb|redis]"

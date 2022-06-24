@@ -2,6 +2,10 @@
 
 # Magento 2 CE/EE DOCKER ENVIRONMENT
 
+1. in windows, need to go container(./wingo mysql8.0) and chmod 644 /etc/mysql/conf.d/my.custom.cnf and ./restart at the frist time.
+2. in windows, need to go container(./wingo mysql5.7) and chmod 644 /etc/mysql/conf.d/my.custom.cnf and ./restart at the first time.
+3. in windows, need to go container(./wingo ubuntu) and sudo chmod 755 /home/www-data/.ssh and sudo chmod 644 /home/www-data/.ssh/authorized_keys and ./restart at the first time.
+
 ### suggestion : 
 #### 1. China registry
 ```
@@ -19,26 +23,30 @@ sudo apt install docker-compose # if you install docker-desktop, it will be adde
 `edit docker-compose.dev.yml, it will be copied from docker-compose.dev.yml.sample at the first running. # these configure codes`
 
 ### 4. Start Docker Compose
-`sh ./start`
+```shell
+# 第一次执行前先加权限：
+chmod +x ./stop ./start ./restart ./remove ./go ./wingo ./upgrade ./docker-compose
+```
+`./start`
 
 ### 5. Restart
-`sh ./restart`
+`./restart`
 
 ### 6. Stop
-`sh ./stop`
+`./stop`
 
 ### 7. Remove all
-`sh ./remove`
+`./remove`
 
 ### 8. Upgrade
-`sh ./upgrade`
+`./upgrade`
 
 ### 9. log in to container
 ```
 # mac&linux
-sh ./go [sshd|php73|php7.3|php74|php7.4|php81|php8.1|nginx|mysql57|mysql5.7|mysql80|mysql8.0|mariadb|redis]
+./go [sshd|php73|php7.3|php74|php7.4|php81|php8.1|nginx|mysql57|mysql5.7|mysql80|mysql8.0|mariadb|redis|ubuntu]
 # windows
-sh ./wingo [sshd|php73|php7.3|php74|php7.4|php81|php8.1|nginx|mysql57|mysql5.7|mysql80|mysql8.0|mariadb|redis]
+./wingo [sshd|php73|php7.3|php74|php7.4|php81|php8.1|nginx|mysql57|mysql5.7|mysql80|mysql8.0|mariadb|redis|ubuntu]
 ```
 
 ### 10. sshd
@@ -99,4 +107,9 @@ http://localhost:8899/ #root user : root ; password : fusc
 ### 15. ES HEAD
 ```shell
 http://localhost:9100/ # check ES data
+```
+### 16. 免密登录sftp
+```shell
+ssh-copy-id -i ~/.ssh/id_rsa -p 3333 www-data@xx.xx.xx.xx # ubuntu container
+ssh-copy-id -i ~/.ssh/id_rsa -p 2222 www-data@xx.xx.xx.xx # sshd container
 ```

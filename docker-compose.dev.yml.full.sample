@@ -102,7 +102,8 @@ services:
       - 3306:3306
     volumes:
       - ./.docker/mysql/log:/var/log/mysql
-      - ./.docker/mysql/my.custom.cnf:/etc/mysql/conf.d/my.custom.cnf:ro
+      - ./.docker/mysql/my.custom.cnf:/etc/mysql/conf.d/my.custom.cnf
+      #in windows, need to go container(./wingo mysql8.0) and chmod 644 /etc/mysql/conf.d/my.custom.cnf at the first time.
       - mysql-data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
@@ -118,7 +119,8 @@ services:
       - seccomp:unconfined
     volumes:
       - ./.docker/mysql57/log:/var/log/mysql
-      - ./.docker/mysql57/my.custom.cnf:/etc/mysql/conf.d/my.custom.cnf:ro
+      - ./.docker/mysql57/my.custom.cnf:/etc/mysql/conf.d/my.custom.cnf
+      #in windows, need to go container(./wingo mysql5.7) and chmod 644 /etc/mysql/conf.d/my.custom.cnf at the first time.
       - mysql57-data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
@@ -208,6 +210,24 @@ services:
       - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
       - 114.114.114.114
 
+  sshd_ubuntu:
+    image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-ubuntu-22.04
+    container_name: ${COMPOSE_PROJECT_NAME}_sshd_ubuntu
+    ports:
+      - "3333:22"
+    restart: always
+    volumes:
+      - ubuntu-www-data-ssh:/home/www-data/.ssh
+      # in windows, need to go container(./wingo ubuntu) and sudo chmod 755 /home/www-data/.ssh and sudo chmod 644 /home/www-data/.ssh/authorized_keys at the first time.
+      - data-www:/data/www
+      - data-workspaces:/data/workspaces
+    extra_hosts:
+      - "git.d1m.cn:10.60.1.2"
+    dns:
+      - 223.5.5.5 #https://www.alidns.com/
+      - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
+      - 114.114.114.114
+
 volumes:
   mysql-data:
   mysql57-data:
@@ -215,3 +235,5 @@ volumes:
   data-www:
   data-rabbitmq:
   elasticsearch-data:
+  data-workspaces:
+  ubuntu-www-data-ssh:
