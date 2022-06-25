@@ -2,8 +2,6 @@
 
 # Magento 2 CE/EE DOCKER ENVIRONMENT
 
-1. in windows, need to go container(./wingo mysql8.0) and chmod 644 /etc/mysql/conf.d/my.custom.cnf and ./restart at the frist time.
-2. in windows, need to go container(./wingo mysql5.7) and chmod 644 /etc/mysql/conf.d/my.custom.cnf and ./restart at the first time.
 
 ### suggestion : 
 #### 1. China registry

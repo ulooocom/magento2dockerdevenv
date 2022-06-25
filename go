@@ -38,37 +38,37 @@ fi
 
 case ${CONTAINER_NAME} in
  s|sshd)
-       docker exec -ti mage_local_sshd sh -l
+       docker exec -ti mage_local_sshd bash
         ;;
  php73|php7.3)
-       docker exec -ti mage_local_php73_fpm sh -l
+       docker exec -ti mage_local_php73_fpm bash
         ;;
  php74|php7.4)
-       docker exec -ti mage_local_php_fpm sh -l
+       docker exec -ti mage_local_php_fpm bash
         ;;
  php81|php8.1)
-       docker exec -ti mage_local_php81_fpm sh -l
+       docker exec -ti mage_local_php81_fpm bash
         ;;
  nginx)
-       docker exec -ti mage_local_nginx sh
+       docker exec -ti mage_local_nginx bash
         ;;
  mysql57|mysql5.7)
-       docker exec -ti mage_local_mysql57 sh
+       docker exec -ti mage_local_mysql57 bash
         ;;
  mysql80|mysql8.0)
-       docker exec -ti mage_local_mysql sh
+       docker exec -ti mage_local_mysql bash
         ;;
  mariadb)
-       docker exec -ti mage_local_mariadb sh
+       docker exec -ti mage_local_mariadb bash
         ;;
  redis)
-       docker exec -ti mage_local_redis sh
+       docker exec -ti mage_local_redis bash
         ;;
  ubuntu)
-       docker exec -ti mage_local_sshd_ubuntu sh
+       docker exec -ti mage_local_sshd_ubuntu bash
         ;;
  *)
-       echo "Warning, Usage: sh ./go ${CONTAINER_NAME} [sshd|php73|php7.3|php74|php7.4|php81|php8.1|nginx|mysql57|mysql5.7|mysql80|mysql8.0|mariadb|redis]"
+       echo "Warning, Usage: sh ./go ${CONTAINER_NAME} [sshd|php73|php7.3|php74|php7.4|php81|php8.1|nginx|mysql57|mysql5.7|mysql80|mysql8.0|mariadb|redis|ubuntu]"
        exit 1
         ;;
 esac

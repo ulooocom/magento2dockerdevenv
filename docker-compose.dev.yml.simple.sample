@@ -71,7 +71,6 @@ services:
       - 3306:3306
     volumes:
       - ./.docker/mysql/log:/var/log/mysql
-      - ./.docker/mysql/my.custom.cnf:/etc/mysql/conf.d/my.custom.cnf:ro
       - mysql-data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
