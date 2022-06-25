@@ -218,7 +218,7 @@ services:
     restart: always
     volumes:
       - ubuntu-www-data-ssh:/home/www-data/.ssh
-      # in windows, need to go container(./wingo ubuntu) and sudo chmod 755 /home/www-data/.ssh and sudo chmod 644 /home/www-data/.ssh/authorized_keys at the first time.
+      # in windows, need to go container(./wingo ubuntu) and sudo chmod 755 /home/www-data/.ssh and sudo chmod 644 /home/www-data/.ssh/authorized_keys and sudo chown -R www-data:www-data authorized_keys at the first time.
       - data-www:/data/www
       - data-workspaces:/data/workspaces
     extra_hosts:

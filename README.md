@@ -4,7 +4,6 @@
 
 1. in windows, need to go container(./wingo mysql8.0) and chmod 644 /etc/mysql/conf.d/my.custom.cnf and ./restart at the frist time.
 2. in windows, need to go container(./wingo mysql5.7) and chmod 644 /etc/mysql/conf.d/my.custom.cnf and ./restart at the first time.
-3. in windows, need to go container(./wingo ubuntu) and sudo chmod 755 /home/www-data/.ssh and sudo chmod 644 /home/www-data/.ssh/authorized_keys and ./restart at the first time.
 
 ### suggestion : 
 #### 1. China registry
@@ -110,6 +109,6 @@ http://localhost:9100/ # check ES data
 ```
 ### 16. 免密登录sftp
 ```shell
+in windows, need to go container(./wingo ubuntu) and sudo chmod 755 /home/www-data/.ssh and sudo chmod 644 /home/www-data/.ssh/authorized_keys and sudo chown -R www-data:www-data authorized_keys at the first time.
 ssh-copy-id -i ~/.ssh/id_rsa -p 3333 www-data@xx.xx.xx.xx # ubuntu container
-ssh-copy-id -i ~/.ssh/id_rsa -p 2222 www-data@xx.xx.xx.xx # sshd container
 ```
