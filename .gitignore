@@ -27,6 +27,9 @@ docker-compose.dev.yml
 .docker/mysql57/log/*
 !.docker/mysql57/log/.gitkeep
 
+.docker/mariadb/log/*
+!.docker/mariadb/log/.gitkeep
+
 /.docker/*.flag
 
 .docker/php-fpm/log/*
