@@ -7,7 +7,7 @@ https://magento.com/tech-resources/download#archive-releases
 
 ### 2. start containers
 ```shell
-sh ./start
+./start
 ```
 
 ### 3. docker cp
@@ -44,7 +44,7 @@ magentoee243p1demo
 
 ### 8. recreate containers
 ```shell
-sh ./restart
+./restart
 ```
 
 ### 9.install script

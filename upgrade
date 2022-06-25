@@ -60,6 +60,6 @@ echo "Try to git pull"
 git pull
 echo "***************************"
 
-echo "Upgrade successfully, please run <sh ./start> to start again."
+echo "Upgrade successfully, please run <./start> to start again."
 echo "***************************"
 
