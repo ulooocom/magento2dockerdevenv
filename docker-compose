@@ -7,7 +7,7 @@ if [ ! -f .env ]; then
 fi
 
 source .env
-#VERSION=$(cat VERSION)
+
 NO_DEV=0
 while [[ $# -gt 0 ]]; do
     case $1 in
