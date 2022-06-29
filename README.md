@@ -23,6 +23,7 @@ sudo apt install docker-compose # if you install docker-desktop, it will be adde
 ```shell
 # 第一次执行前先加权限：
 chmod +x ./stop ./start ./restart ./remove ./go ./wingo ./upgrade ./docker-compose
+chmod 777 -R .docker/php73-fpm/log .docker/php-fpm/log .docker/php81-fpm/log
 ```
 `./start`
 
