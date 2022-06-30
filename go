@@ -50,19 +50,19 @@ case ${CONTAINER_NAME} in
        docker exec -ti mage_local_php81_fpm sh
         ;;
  nginx)
-       docker exec -ti mage_local_nginx bash
+       docker exec -ti mage_local_nginx sh
         ;;
  mysql57|mysql5.7)
-       docker exec -ti mage_local_mysql57 bash
+       docker exec -ti mage_local_mysql57 sh
         ;;
  mysql80|mysql8.0)
-       docker exec -ti mage_local_mysql bash
+       docker exec -ti mage_local_mysql sh
         ;;
  mariadb)
-       docker exec -ti mage_local_mariadb bash
+       docker exec -ti mage_local_mariadb sh
         ;;
  redis)
-       docker exec -ti mage_local_redis bash
+       docker exec -ti mage_local_redis sh
         ;;
  ubuntu)
        docker exec -ti mage_local_sshd_ubuntu sh

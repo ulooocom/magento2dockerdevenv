@@ -50,19 +50,19 @@ case ${CONTAINER_NAME} in
        winpty docker exec -ti mage_local_php81_fpm sh
         ;;
  nginx)
-       winpty docker exec -ti mage_local_nginx bash
+       winpty docker exec -ti mage_local_nginx sh
         ;;
  mysql57|mysql5.7)
-       winpty docker exec -ti mage_local_mysql57 bash
+       winpty docker exec -ti mage_local_mysql57 sh
         ;;
  mysql80|mysql8.0)
-       winpty docker exec -ti mage_local_mysql bash
+       winpty docker exec -ti mage_local_mysql sh
         ;;
  mariadb)
-       winpty docker exec -ti mage_local_mariadb bash
+       winpty docker exec -ti mage_local_mariadb sh
         ;;
  redis)
-       winpty docker exec -ti mage_local_redis bash
+       winpty docker exec -ti mage_local_redis sh
         ;;
  ubuntu)
        winpty docker exec -ti mage_local_sshd_ubuntu sh
