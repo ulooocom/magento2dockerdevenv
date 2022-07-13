@@ -18,12 +18,21 @@ echo "***************************"
 docker volume ls -q
 echo "***************************"
 
-{ # try
-    echo 'Second Step: remove all containers'
-    docker container rm -f $(docker container ls -q) 2> /dev/null
-} || { # catch
-    echo "Try to remove containers skip."
-}
+if [ ${ONLY_DELETE_CURRENT_PROJECT_VOLUME} == true ]; then
+  { # try
+      echo 'Second Step: remove all containers from ' ${COMPOSE_PROJECT_NAME}
+      docker container rm -f $(docker container ls -q | grep ${COMPOSE_PROJECT_NAME}) 2> /dev/null
+  } || { # catch
+      echo "Try to remove containers skip."
+  }
+else
+  { # try
+      echo 'Second Step: remove all containers from this image'
+      docker container rm -f $(docker container ls -q) 2> /dev/null
+  } || { # catch
+      echo "Try to remove containers skip."
+  }
+fi
 
 { # try
     docker stop $(docker ps -a | grep "Exited" | awk '{print $1 }')  2> /dev/null
