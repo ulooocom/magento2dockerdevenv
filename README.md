@@ -82,17 +82,17 @@ drill baidu.com
 
 ### 11. PHP7.3.27
 ```shell
-http://localhost:7300/
+http://php.demo/php73.php
 ```
 
 ### 12. PHP7.4.28
 ```shell
-http://localhost:7400/
+http://php.demo/php74.php
 ```
 
 ### 13. PHP8.1.5
 ```shell
-http://localhost:8100/
+http://php.demo/php81.php
 ```
 
 ### 14. ADMINER

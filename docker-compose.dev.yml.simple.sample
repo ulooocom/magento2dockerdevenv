@@ -42,8 +42,6 @@ services:
     restart: always
     ports:
       - 80:80
-      - 7400:7400 #php74
-      - 8100:8100 #php81
     depends_on:
       - php-fpm
     volumes:

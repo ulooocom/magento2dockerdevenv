@@ -59,9 +59,6 @@ services:
     restart: always
     ports:
       - 80:80
-      - 7300:7300 #php73
-      - 7400:7400 #php74
-      - 8100:8100 #php81
     depends_on:
       - php-fpm
     volumes:
@@ -214,10 +211,10 @@ services:
     restart: always
     volumes:
       - ubuntu-www-data-ssh:/home/www-data/.ssh
-      # in windows, need to go container(./wingo ubuntu) 
-      # sudo chmod 755 /home/www-data/.ssh 
-      # sudo chmod 644 /home/www-data/.ssh/authorized_keys 
-      # sudo chown -R www-data:www-data authorized_keys 
+      # in windows, need to go container(./wingo ubuntu)
+      # sudo chmod 755 /home/www-data/.ssh
+      # sudo chmod 644 /home/www-data/.ssh/authorized_keys
+      # sudo chown -R www-data:www-data authorized_keys
       # at the first time.
       - data-www:/data/www
       - data-workspaces:/data/workspaces
