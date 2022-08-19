@@ -178,6 +178,25 @@ services:
       - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
       - 114.114.114.114
 
+  code-server:
+    image: codercom/code-server:latest
+    container_name: ${COMPOSE_PROJECT_NAME}_code_server
+    environment:
+      - DOCKER_USER:www-data
+    user: 1000:1000
+    ports:
+      - "9901:8080"
+    restart: always
+    volumes:
+      - ./.docker/code-server/.config:/home/coder/.config
+      - data-www:/data/www
+    extra_hosts:
+      - "git.d1m.cn:10.60.1.2"
+    dns:
+      - 223.5.5.5 #https://www.alidns.com/
+      - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
+      - 114.114.114.114
+
 volumes:
   mysql-data:
   mysql57-data:
