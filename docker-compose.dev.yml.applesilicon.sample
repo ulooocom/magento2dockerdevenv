@@ -132,7 +132,7 @@ services:
       - ADMINER_DEFAULT_SERVER=${ADMINER_DEFAULT_SERVER}
 
   elasticsearch:
-    image: ${ALIYUN_CONTAINER_URL}/magento2:ES-7.17.3
+    image: elasticsearch:7.17.6
     container_name: ${COMPOSE_PROJECT_NAME}_es
     restart: always
     environment:
