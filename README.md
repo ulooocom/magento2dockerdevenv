@@ -83,16 +83,19 @@ drill baidu.com
 ### 11. PHP7.3.27
 ```shell
 http://php.demo/php73.php
+#add php.demo 127.0.0.1 in the hosts file at first
 ```
 
 ### 12. PHP7.4.28
 ```shell
 http://php.demo/php74.php
+#add php.demo 127.0.0.1 in the hosts file at first
 ```
 
-### 13. PHP8.1.5
+### 13. PHP8.1.6
 ```shell
 http://php.demo/php81.php
+#add php.demo 127.0.0.1 in the hosts file at first
 ```
 
 ### 14. ADMINER
@@ -110,4 +113,8 @@ http://localhost:9100/ # check ES data
 ```shell
 in windows, need to go container(./wingo ubuntu) and sudo chmod 755 /home/www-data/.ssh and sudo chmod 644 /home/www-data/.ssh/authorized_keys and sudo chown -R www-data:www-data authorized_keys at the first time.
 ssh-copy-id -i ~/.ssh/id_rsa -p 3333 www-data@xx.xx.xx.xx # ubuntu container
+```
+### 17. code on cloud(code server)
+```shell
+http://localhost:9901/ # only works in base and full deploy type
 ```
