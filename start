@@ -26,6 +26,8 @@ if [ ! -f docker-compose.dev.yml ]; then
     if [ -f .docker/nginx/etc/conf.d/php73_demo.conf ]; then
       mv .docker/nginx/etc/conf.d/php73_demo.conf .docker/nginx/etc/conf.d/php73_demo.conf.sample
     fi
+  elif [ ${RUN_TYPE} == 'APPLESILICON' ]; then
+      cp docker-compose.dev.yml.applesilicon.sample docker-compose.dev.yml
   else
     cp docker-compose.dev.yml.sample docker-compose.dev.yml
   fi
