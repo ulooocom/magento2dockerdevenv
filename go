@@ -40,6 +40,9 @@ case ${CONTAINER_NAME} in
  s|sshd)
        docker exec -ti mage_local_sshd sh
         ;;
+ s74|sshd74)
+       docker exec -ti mage_local_sshd74 sh
+        ;;
  php73|php7.3)
        docker exec -ti mage_local_php73_fpm sh
         ;;
