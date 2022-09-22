@@ -108,19 +108,9 @@ services:
       - ./.docker/elasticsearch/config/jvm.options:/usr/share/elasticsearch/config/jvm.options:ro
       - ./.docker/elasticsearch/logs:/usr/share/elasticsearch/logs
 
-  # 默认不再开启，可按需开起
-  #elasticsearch-head:
-  #  image: ${ALIYUN_CONTAINER_URL}/magento2:ES-HEAD
-  #  container_name: ${COMPOSE_PROJECT_NAME}_es_head
-  #  restart: always
-  #  ports:
-  #    - "9100:9100"
-  #  volumes:
-  #    - ./.docker/elasticsearch-head/config/Gruntfile.js:/usr/src/app/Gruntfile.js:ro
-
   sshd:
     #image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-php-8.1.7 #pick one for yourself
-    image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-php-7.4.29
+    image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-php-7.4.30
     container_name: ${COMPOSE_PROJECT_NAME}_sshd
     ports:
       - "2222:22"
