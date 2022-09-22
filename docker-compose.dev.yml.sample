@@ -18,7 +18,8 @@ services:
       - 223.5.5.5 #https://www.alidns.com/
       - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
       - 114.114.114.114
-
+  
+  # 默认不再开启，可按需开起
   #php73-fpm:
   #  image: ${ALIYUN_CONTAINER_URL}/magento2:php-7.3.33-fpm
   #  container_name: ${COMPOSE_PROJECT_NAME}_php73_fpm

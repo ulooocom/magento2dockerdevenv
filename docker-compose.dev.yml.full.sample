@@ -19,6 +19,7 @@ services:
       - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
       - 114.114.114.114
 
+  # 默认不再开启，可按需开起
   #php73-fpm:
   #  image: ${ALIYUN_CONTAINER_URL}/magento2:php-7.3.33-fpm
   #  container_name: ${COMPOSE_PROJECT_NAME}_php73_fpm
@@ -105,6 +106,7 @@ services:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
 
+  # 默认不再开启，可按需开起
   #mysql57:
   #  image: ${ALIYUN_CONTAINER_URL}/magento2:mysql-5.7.37
   #  container_name: ${COMPOSE_PROJECT_NAME}_mysql57
@@ -181,7 +183,7 @@ services:
       image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-php-7.4.30
       container_name: ${COMPOSE_PROJECT_NAME}_sshd74
       ports:
-        - "2274:22"
+        - "2221:22"
       restart: always
       volumes:
         - ./.docker/php-fpm/etc/conf.d/php.local.ini:/usr/local/etc/php/php.ini:ro
