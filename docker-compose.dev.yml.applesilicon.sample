@@ -51,7 +51,7 @@ services:
       - data-www:/data/www
 
   redis:
-    image: redis:5.0.14
+    image: ${ALIYUN_CONTAINER_URL}/magento2:redis-5.0.14-applesilicon
     container_name: ${COMPOSE_PROJECT_NAME}_redis
     restart: always
     stdin_open: true
@@ -60,7 +60,7 @@ services:
 
   # 默认不再开启，可按需开起
   #mariadb:
-  #  image: mariadb:10.9.3
+  #  image: ${ALIYUN_CONTAINER_URL}/magento2:mariadb-10.9.3-applesilicon
   #  container_name: ${COMPOSE_PROJECT_NAME}_mariadb
   #  restart: always
   #  stdin_open: true
