@@ -23,7 +23,7 @@ sudo apt install docker-compose # if you install docker-desktop, it will be adde
 ```shell
 # 第一次执行前先加权限：
 chmod +x ./stop ./start ./restart ./remove ./go ./wingo ./upgrade ./docker-compose
-chmod 777 -R .docker/php73-fpm/log .docker/php-fpm/log .docker/php81-fpm/log
+chmod 777 -R .docker/php-fpm/log .docker/php81-fpm/log
 ```
 `./start`
 
@@ -42,9 +42,9 @@ chmod 777 -R .docker/php73-fpm/log .docker/php-fpm/log .docker/php81-fpm/log
 ### 9. log in to container
 ```
 # mac&linux
-./go [sshd|php73|php7.3|php74|php7.4|php81|php8.1|nginx|mysql57|mysql5.7|mysql80|mysql8.0|mariadb|redis|ubuntu]
+./go [sshd|php74|php7.4|php81|php8.1|nginx|mysql80|mysql8.0|mariadb|redis|ubuntu]
 # windows
-./wingo [sshd|php73|php7.3|php74|php7.4|php81|php8.1|nginx|mysql57|mysql5.7|mysql80|mysql8.0|mariadb|redis|ubuntu]
+./wingo [sshd|php74|php7.4|php81|php8.1|nginx|mysql80|mysql8.0|mariadb|redis|ubuntu]
 ```
 
 ### 10. sshd
@@ -84,15 +84,16 @@ drill baidu.com
 ```shell
 http://php.demo/php73.php
 #add php.demo 127.0.0.1 in the hosts file at first
+#not include this version in v3.0 and later
 ```
 
-### 12. PHP7.4.28
+### 12. PHP7.4.30
 ```shell
 http://php.demo/php74.php
 #add php.demo 127.0.0.1 in the hosts file at first
 ```
 
-### 13. PHP8.1.6
+### 13. PHP8.1.7
 ```shell
 http://php.demo/php81.php
 #add php.demo 127.0.0.1 in the hosts file at first
@@ -108,6 +109,7 @@ http://localhost:8899/ #root user : root ; password : fusc
 ### 15. ES HEAD
 ```shell
 http://localhost:9100/ # check ES data
+#not include this version in v3.0 and later
 ```
 ### 16. 免密登录sftp
 ```shell
