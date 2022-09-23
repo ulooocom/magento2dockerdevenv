@@ -39,7 +39,7 @@ services:
   # 默认不再开启，可按需开起
   # 注意开起后，需要调整 .docker/nginx/etc/conf.d/php73_fastcgi_backend.conf 的 第 2，4，7行注释
   #php73-fpm:
-  #  image: ${ALIYUN_CONTAINER_URL}/magento2:php-7.3.33-fpm
+  #  image: ${ALIYUN_CONTAINER_URL}/magento2:php-7.3.33-fpm-applesilicon
   #  container_name: ${COMPOSE_PROJECT_NAME}_php73_fpm
   #  cap_add:
   #    - SYS_PTRACE
