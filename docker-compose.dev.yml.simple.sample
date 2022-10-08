@@ -14,6 +14,9 @@ services:
       - ./.docker/php-fpm/etc/php-fpm.d/www.local.conf:/usr/local/etc/php-fpm.d/www.conf:ro
       - ./.docker/php-fpm/log:/usr/local/log
       - data-www:/data/www
+    extra_hosts:
+      - "git.d1m.cn:10.60.1.2"
+      - "sonarqube.d1m.cn:10.60.1.2"
     dns:
       - 223.5.5.5 #https://www.alidns.com/
       - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
@@ -31,6 +34,9 @@ services:
       - ./.docker/php81-fpm/etc/php-fpm.d/www.local.conf:/usr/local/etc/php-fpm.d/www.conf:ro
       - ./.docker/php81-fpm/log:/usr/local/log
       - data-www:/data/www
+    extra_hosts:
+      - "git.d1m.cn:10.60.1.2"
+      - "sonarqube.d1m.cn:10.60.1.2"
     dns:
       - 223.5.5.5 #https://www.alidns.com/
       - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
@@ -119,6 +125,9 @@ services:
       - ./.docker/php-fpm/etc/conf.d/php.local.ini:/usr/local/etc/php/php.ini:ro
       - ./.docker/php-fpm/etc/conf.d/00-opcache-recommended.ini:/usr/local/etc/php/conf.d/00-opcache-recommended.ini:ro
       - data-www:/data/www
+    extra_hosts:
+      - "git.d1m.cn:10.60.1.2"
+      - "sonarqube.d1m.cn:10.60.1.2"
     dns:
       - 223.5.5.5 #https://www.alidns.com/
       - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
