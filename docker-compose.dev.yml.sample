@@ -188,7 +188,7 @@ services:
       - 114.114.114.114
 
   code-server:
-    image: codercom/code-server:latest
+    image: registry.cn-shanghai.aliyuncs.com/ulooocom/magento2:code-server
     container_name: ${COMPOSE_PROJECT_NAME}_code_server
     environment:
       - DOCKER_USER:www-data
