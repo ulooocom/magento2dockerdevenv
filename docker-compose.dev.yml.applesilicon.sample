@@ -167,6 +167,15 @@ services:
   #  volumes:
   #    - ./.docker/elasticsearch-head/config/Gruntfile.js:/usr/src/app/Gruntfile.js:ro
 
+  elasticsearch-kibana:
+    image: registry.cn-shanghai.aliyuncs.com/ulooocom/magento2:kibana-7.17.3-applesilicon
+    container_name: ${COMPOSE_PROJECT_NAME}_kibana
+    restart: always
+    ports:
+      - "5601:5601"
+    volumes:
+      - ./.docker/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml
+
   # 默认不再开启，可按需开起
   #sshd74:
   #  image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-php-7.4.30-applesilicon

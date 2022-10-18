@@ -164,6 +164,15 @@ services:
     volumes:
       - ./.docker/elasticsearch-head/config/Gruntfile.js:/usr/src/app/Gruntfile.js:ro
 
+  elasticsearch-kibana:
+    image: registry.cn-shanghai.aliyuncs.com/ulooocom/magento2:kibana-7.17.3
+    container_name: ${COMPOSE_PROJECT_NAME}_kibana
+    restart: always
+    ports:
+      - "5601:5601"
+    volumes:
+      - ./.docker/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml
+
   sshd:
     image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-php-8.1.7
     container_name: ${COMPOSE_PROJECT_NAME}_sshd
