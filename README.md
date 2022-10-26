@@ -111,3 +111,8 @@ http://localhost:9100/ # check ES data
 in windows, need to go container(./wingo ubuntu) and sudo chmod 755 /home/www-data/.ssh and sudo chmod 644 /home/www-data/.ssh/authorized_keys and sudo chown -R www-data:www-data authorized_keys at the first time.
 ssh-copy-id -i ~/.ssh/id_rsa -p 3333 www-data@xx.xx.xx.xx # ubuntu container
 ```
+### 17. mq management
+```shell
+http://192.168.236.170:15672/
+fusc/fusc
+```
