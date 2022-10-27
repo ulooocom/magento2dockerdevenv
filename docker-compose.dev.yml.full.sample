@@ -151,6 +151,8 @@ services:
       - "9300:9300"
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
+      - ./.docker/elasticsearch/plugins/IK/config/IKAnalyzer.cfg.xml:/usr/share/elasticsearch/plugins/elasticsearch-analysis-ik-7.17.3/config/IKAnalyzer.cfg.xml:ro
+      - ./.docker/elasticsearch/plugins/IK/config/custom_dict.dic:/usr/share/elasticsearch/plugins/elasticsearch-analysis-ik-7.17.3/config/custom_dict.dic:ro
       - ./.docker/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
       - ./.docker/elasticsearch/config/jvm.options:/usr/share/elasticsearch/config/jvm.options:ro
       - ./.docker/elasticsearch/logs:/usr/share/elasticsearch/logs
