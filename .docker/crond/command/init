@@ -1,0 +1,17 @@
+#!/bin/sh
+
+#/usr/local/bin/php /data/www/bin/magento maintenance:enable
+# migrate db when deploy or run up container
+/usr/local/bin/php /data/www/bin/magento setup:upgrade --keep-generated
+/usr/local/bin/php /data/www/bin/magento cache:flush
+
+# Build static files and DI compile if not done in CI
+if [ ! -f /data/www/static-generated.lock ]; then
+    /usr/local/bin/php /data/www/bin/magento setup:static-content:deploy zh_Hans_CN en_US --area adminhtml -f
+    /usr/local/bin/php /data/www/bin/magento setup:static-content:deploy zh_Hans_CN en_US --area frontend -f
+    /usr/local/bin/php /data/www/bin/magento setup:di:compile
+    touch /data/www/static-generated.lock
+fi
+#/usr/local/bin/php /data/www/bin/magento maintenance:disable
+
+echo "Magento init done"

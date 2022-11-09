@@ -1,0 +1,8 @@
+ls -la /data/www/app/etc/env.php
+mv /data/www/app/etc/env.php /tmp/env.php
+/usr/local/bin/php /data/www/bin/magento setup:static-content:deploy zh_Hans_CN en_US --area adminhtml -f
+/usr/local/bin/php /data/www/bin/magento setup:di:compile
+touch /data/www/static-generated.lock
+ls -la /tmp/env.php
+mv /tmp/env.php /data/www/app/etc/env.php
+ls -la /data/www/app/etc/env.php

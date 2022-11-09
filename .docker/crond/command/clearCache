@@ -1,0 +1,3 @@
+#!/bin/sh
+/usr/local/bin/php /data/www/bin/magento cache:flush
+echo "Magento Clear Cache done"
