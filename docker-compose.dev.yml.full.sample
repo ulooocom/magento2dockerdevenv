@@ -39,6 +39,7 @@ services:
 
   php81-fpm:
     image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.1.7-fpm
+    #image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.1.7-fpm-zstd-xdebug
     container_name: ${COMPOSE_PROJECT_NAME}_php81_fpm
     cap_add:
       - SYS_PTRACE
