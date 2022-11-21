@@ -4,6 +4,7 @@ services:
 
   php-fpm:
     image: ${ALIYUN_CONTAINER_URL}/magento2:php-7.4.30-fpm-applesilicon
+    #image: ${ALIYUN_CONTAINER_URL}/magento2:php-7.4.30-fpm-zstd-xdebug-applesilicon
     container_name: ${COMPOSE_PROJECT_NAME}_php_fpm
     cap_add:
       - SYS_PTRACE
@@ -11,6 +12,7 @@ services:
     volumes:
       - ./.docker/php-fpm/etc/conf.d/php.local.ini:/usr/local/etc/php/php.ini
       - ./.docker/php-fpm/etc/conf.d/00-opcache-recommended.ini:/usr/local/etc/php/conf.d/00-opcache-recommended.ini
+      #- ./.docker/php-fpm/etc/conf.d/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
       - ./.docker/php-fpm/etc/php-fpm.d/www.local.conf:/usr/local/etc/php-fpm.d/www.conf:ro
       - ./.docker/php-fpm/log:/usr/local/log
       - data-www:/data/www
@@ -21,7 +23,7 @@ services:
 
   php81-fpm:
     image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.1.7-fpm-applesilicon
-    #image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.1.7-fpm-zstd-xdebug
+    #image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.1.7-fpm-zstd-xdebug-applesilicon
     container_name: ${COMPOSE_PROJECT_NAME}_php81_fpm
     cap_add:
       - SYS_PTRACE
