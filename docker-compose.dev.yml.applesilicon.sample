@@ -29,6 +29,7 @@ services:
     volumes:
       - ./.docker/php81-fpm/etc/conf.d/php.local.ini:/usr/local/etc/php/php.ini:ro
       - ./.docker/php81-fpm/etc/conf.d/00-opcache-recommended.ini:/usr/local/etc/php/conf.d/00-opcache-recommended.ini
+      #- ./.docker/php81-fpm/etc/conf.d/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
       - ./.docker/php81-fpm/etc/php-fpm.d/www.local.conf:/usr/local/etc/php-fpm.d/www.conf:ro
       - ./.docker/php81-fpm/log:/usr/local/log
       - data-www:/data/www
