@@ -68,7 +68,7 @@ case ${CONTAINER_NAME} in
        docker exec -ti mage_local_redis sh
         ;;
  ubuntu)
-       docker exec -ti mage_local_sshd_ubuntu sh
+       docker exec -ti mage_local_sshd_ubuntu bash
         ;;
  *)
        echo "Warning, Usage: ./go ${CONTAINER_NAME} [sshd|php73|php7.3|php74|php7.4|php81|php8.1|nginx|mysql57|mysql5.7|mysql80|mysql8.0|mariadb|redis|ubuntu]"
