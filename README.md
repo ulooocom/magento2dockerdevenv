@@ -82,6 +82,7 @@ drill baidu.com
 
 ### 11. PHP7.3.27
 ```shell
+# add host config to your hosts file, eg. 127.0.0.1 php.demo
 http://php.demo/php73.php
 ```
 
