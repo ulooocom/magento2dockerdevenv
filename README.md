@@ -80,18 +80,18 @@ drill baidu.com
 # drill
 ```
 
-### 11. PHP7.3.27
+### 11. PHP7.3.X
 ```shell
 # add host config to your hosts file, eg. 127.0.0.1 php.demo
 http://php.demo/php73.php
 ```
 
-### 12. PHP7.4.28
+### 12. PHP7.4.X
 ```shell
 http://php.demo/php74.php
 ```
 
-### 13. PHP8.1.5
+### 13. PHP8.1.X
 ```shell
 http://php.demo/php81.php
 ```
