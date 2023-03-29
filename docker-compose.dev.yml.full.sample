@@ -57,42 +57,6 @@ services:
       - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
       - 114.114.114.114
 
-  d1m-queue-worker:
-    image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.1.17-fpm-alpine3.17
-    container_name: ${COMPOSE_PROJECT_NAME}_d1m_queue_worker
-    entrypoint: ["php", "-d", "memory_limit=-1", "/data/www/ts-v21/bin/magento", "d1m:queue:worker", "clear"]
-    cap_add:
-      - SYS_PTRACE
-    restart: always
-    volumes:
-      - ./.docker/php81-fpm/etc/conf.d/php.local.ini:/usr/local/etc/php/php.ini:ro
-      - ./.docker/php81-fpm/etc/conf.d/00-opcache-recommended.ini:/usr/local/etc/php/conf.d/00-opcache-recommended.ini
-      - ./.docker/php81-fpm/etc/php-fpm.d/www.local.conf:/usr/local/etc/php-fpm.d/www.conf:ro
-      - ./.docker/php81-fpm/log:/usr/local/log
-      - data-www:/data/www
-    dns:
-      - 223.5.5.5 #https://www.alidns.com/
-      - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
-      - 114.114.114.114
-
-  d1m-cache-producer:
-    image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.1.17-fpm-alpine3.17
-    container_name: ${COMPOSE_PROJECT_NAME}_d1m_cache_producer
-    entrypoint: [ "php", "-d", "memory_limit=-1", "/data/www/ts-v21/bin/magento", "d1m:producer:worker", "clear"]
-    cap_add:
-      - SYS_PTRACE
-    restart: always
-    volumes:
-      - ./.docker/php81-fpm/etc/conf.d/php.local.ini:/usr/local/etc/php/php.ini:ro
-      - ./.docker/php81-fpm/etc/conf.d/00-opcache-recommended.ini:/usr/local/etc/php/conf.d/00-opcache-recommended.ini
-      - ./.docker/php81-fpm/etc/php-fpm.d/www.local.conf:/usr/local/etc/php-fpm.d/www.conf:ro
-      - ./.docker/php81-fpm/log:/usr/local/log
-      - data-www:/data/www
-    dns:
-      - 223.5.5.5 #https://www.alidns.com/
-      - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
-      - 114.114.114.114
-
   nginx:
     image: ${ALIYUN_CONTAINER_URL}/magento2:nginx-1.21.6
     container_name: ${COMPOSE_PROJECT_NAME}_nginx
