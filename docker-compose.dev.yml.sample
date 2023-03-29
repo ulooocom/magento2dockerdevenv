@@ -149,44 +149,29 @@ services:
       - ./.docker/elasticsearch/logs:/usr/share/elasticsearch/logs
 
   elasticsearch-kibana:
-      image: registry.cn-shanghai.aliyuncs.com/ulooocom/magento2:kibana-7.17.3
-      container_name: ${COMPOSE_PROJECT_NAME}_kibana
-      restart: always
-      ports:
-        - "5601:5601"
-      volumes:
-        - ./.docker/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml
+    image: registry.cn-shanghai.aliyuncs.com/ulooocom/magento2:kibana-7.17.3
+    container_name: ${COMPOSE_PROJECT_NAME}_kibana
+    restart: always
+    ports
+      - "5601:5601"
+    volumes:
+      - ./.docker/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml
 
-  sshd:
-    image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-php-8.1.7
-    container_name: ${COMPOSE_PROJECT_NAME}_sshd
+  sshd_ubuntu:
+    image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-ubuntu-22.04
+    container_name: ${COMPOSE_PROJECT_NAME}_sshd_ubuntu
     ports:
-      - "2222:22"
+      - "3333:22"
     restart: always
     volumes:
-      - ./.docker/php-fpm/etc/conf.d/php.local.ini:/usr/local/etc/php/php.ini:ro
-      - ./.docker/php-fpm/etc/conf.d/00-opcache-recommended.ini:/usr/local/etc/php/conf.d/00-opcache-recommended.ini:ro
+      - ubuntu-www-data-ssh:/home/www-data/.ssh
+      # in windows, need to go container(./wingo ubuntu)
+      # sudo chmod 755 /home/www-data/.ssh
+      # sudo chmod 644 /home/www-data/.ssh/authorized_keys
+      # sudo chown -R www-data:www-data authorized_keys
+      # at the first time.
       - data-www:/data/www
-    extra_hosts:
-      - "git.d1m.cn:10.60.1.2"
-      - "sonarqube.d1m.cn:10.60.1.2"
-    dns:
-      - 223.5.5.5 #https://www.alidns.com/
-      - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
-      - 114.114.114.114
-
-  code-server:
-    image: registry.cn-shanghai.aliyuncs.com/ulooocom/magento2:code-server
-    container_name: ${COMPOSE_PROJECT_NAME}_code_server
-    environment:
-      - DOCKER_USER:www-data
-    user: 1000:1000
-    ports:
-      - "9901:8080"
-    restart: always
-    volumes:
-      - ./.docker/code-server/.config:/home/coder/.config
-      - data-www:/data/www
+      - data-workspaces:/data/workspaces
     extra_hosts:
       - "git.d1m.cn:10.60.1.2"
       - "sonarqube.d1m.cn:10.60.1.2"
@@ -198,6 +183,5 @@ services:
 volumes:
   mysql-data:
   mysql57-data:
-  mariadb-data:
   data-www:
   elasticsearch-data:

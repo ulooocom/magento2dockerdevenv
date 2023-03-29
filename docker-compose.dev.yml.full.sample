@@ -226,7 +226,6 @@ services:
 volumes:
   mysql-data:
   mysql57-data:
-  mariadb-data:
   data-www:
   data-rabbitmq:
   elasticsearch-data:
