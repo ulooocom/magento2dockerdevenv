@@ -90,7 +90,7 @@ http://php.demo/php73.php
 http://php.demo/php74.php
 ```
 
-### 13. PHP8.1.5
+### 13. PHP8.1.17
 ```shell
 http://php.demo/php81.php
 ```
@@ -100,7 +100,6 @@ http://php.demo/php81.php
 http://localhost:8899/ #root user : root ; password : fusc
 #visit mysql8.0, sever name : mysql
 #visit mysql5.7, sever name : mysql57
-#visit mariadb, sever name : mariadb
 ```
 ### 15. ES HEAD
 ```shell

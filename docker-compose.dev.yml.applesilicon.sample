@@ -81,20 +81,6 @@ services:
     tty: true
     command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
 
-  # 默认不再开启，可按需开起
-  #mariadb:
-  #  image: ${ALIYUN_CONTAINER_URL}/magento2:mariadb-10.9.3-applesilicon
-  #  container_name: ${COMPOSE_PROJECT_NAME}_mariadb
-  #  restart: always
-  #  stdin_open: true
-  #  tty: true
-  #  volumes:
-  #    - mariadb-data:/var/lib/mysql
-  #  environment:
-  #    - MARIADB_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-  #    - MARIADB_USER=${MYSQL_USER}
-  #    - MARIADB_PASSWORD=${MYSQL_PASSWORD}
-
   mysql:
     image: ${ALIYUN_CONTAINER_URL}/magento2:mysql-8.0.29-applesilicon
     container_name: ${COMPOSE_PROJECT_NAME}_mysql
@@ -161,16 +147,6 @@ services:
       - ./.docker/elasticsearch/config/jvm.options:/usr/share/elasticsearch/config/jvm.options:ro
       - ./.docker/elasticsearch/logs:/usr/share/elasticsearch/logs
 
-  # 默认不再开启，可按需开起，只有 AMD64 版本
-  #elasticsearch-head:
-  #  image: ${ALIYUN_CONTAINER_URL}/magento2:ES-HEAD
-  #  container_name: ${COMPOSE_PROJECT_NAME}_es_head
-  #  restart: always
-  #  ports:
-  #    - "9100:9100"
-  #  volumes:
-  #    - ./.docker/elasticsearch-head/config/Gruntfile.js:/usr/src/app/Gruntfile.js:ro
-
   elasticsearch-kibana:
     image: registry.cn-shanghai.aliyuncs.com/ulooocom/magento2:kibana-7.17.3-applesilicon
     container_name: ${COMPOSE_PROJECT_NAME}_kibana
@@ -179,22 +155,6 @@ services:
       - "5601:5601"
     volumes:
       - ./.docker/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml
-
-  # 默认不再开启，可按需开起
-  #sshd74:
-  #  image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-php-7.4.30-applesilicon
-  #  container_name: ${COMPOSE_PROJECT_NAME}_sshd74
-  #  ports:
-  #    - "2221:22"
-  #  restart: always
-  #  volumes:
-  #    - ./.docker/php-fpm/etc/conf.d/php.local.ini:/usr/local/etc/php/php.ini:ro
-  #    - ./.docker/php-fpm/etc/conf.d/00-opcache-recommended.ini:/usr/local/etc/php/conf.d/00-opcache-recommended.ini:ro
-  #    - data-www:/data/www
-  #  dns:
-  #    - 223.5.5.5 #https://www.alidns.com/
-  #    - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
-  #    - 114.114.114.114
 
   sshd:
     image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-php-8.1.7-applesilicon
