@@ -1,4 +1,4 @@
-FROM registry.cn-shanghai.aliyuncs.com/ulooocom/magento2:php-8.1.12-fpm
+FROM registry.cn-shanghai.aliyuncs.com/ulooocom/magento2:php-8.1.17-fpm-alpine3.17
 
 USER root
 #change apk source
