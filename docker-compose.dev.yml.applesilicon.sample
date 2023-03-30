@@ -140,16 +140,21 @@ services:
     volumes:
       - ./.docker/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml
 
-  sshd:
-    image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-php-8.1.7-applesilicon
-    container_name: ${COMPOSE_PROJECT_NAME}_sshd
+  sshd_ubuntu:
+    image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-ubuntu-22.04-applesilicon
+    container_name: ${COMPOSE_PROJECT_NAME}_sshd_ubuntu
     ports:
-      - "2222:22"
+      - "3333:22"
     restart: always
     volumes:
-      - ./.docker/php-fpm/etc/conf.d/php.local.ini:/usr/local/etc/php/php.ini:ro
-      - ./.docker/php-fpm/etc/conf.d/00-opcache-recommended.ini:/usr/local/etc/php/conf.d/00-opcache-recommended.ini:ro
+      - ubuntu-www-data-ssh:/home/www-data/.ssh
+      # in windows, need to go container(./wingo ubuntu)
+      # sudo chmod 755 /home/www-data/.ssh
+      # sudo chmod 644 /home/www-data/.ssh/authorized_keys
+      # sudo chown -R www-data:www-data authorized_keys
+      # at the first time.
       - data-www:/data/www
+      - data-workspaces:/data/workspaces
     extra_hosts:
       - "git.d1m.cn:10.60.1.2"
       - "sonarqube.d1m.cn:10.60.1.2"
