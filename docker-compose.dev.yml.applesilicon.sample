@@ -155,9 +155,6 @@ services:
       # at the first time.
       - data-www:/data/www
       - data-workspaces:/data/workspaces
-    extra_hosts:
-      - "git.d1m.cn:10.60.1.2"
-      - "sonarqube.d1m.cn:10.60.1.2"
     dns:
       - 223.5.5.5 #https://www.alidns.com/
       - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
