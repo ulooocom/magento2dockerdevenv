@@ -149,7 +149,7 @@ services:
     image: registry.cn-shanghai.aliyuncs.com/ulooocom/magento2:kibana-7.17.3
     container_name: ${COMPOSE_PROJECT_NAME}_kibana
     restart: always
-    ports
+    ports:
       - "5601:5601"
     volumes:
       - ./.docker/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml
