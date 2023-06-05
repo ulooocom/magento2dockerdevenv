@@ -165,3 +165,5 @@ volumes:
   mysql57-data:
   data-www:
   elasticsearch-data:
+  data-workspaces:
+  ubuntu-www-data-ssh:
