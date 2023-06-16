@@ -37,9 +37,6 @@ fi
 #mage_local_sshd_ubuntu
 
 case ${CONTAINER_NAME} in
- s|sshd)
-       winpty docker exec -ti mage_local_sshd sh
-        ;;
  php73|php7.3)
        winpty docker exec -ti mage_local_php73_fpm sh
         ;;
@@ -64,11 +61,11 @@ case ${CONTAINER_NAME} in
  redis)
        winpty docker exec -ti mage_local_redis sh
         ;;
- ubuntu)
+  s|sshd|ubuntu)
        winpty docker exec -ti mage_local_sshd_ubuntu sh
         ;;
  *)
-       echo "Warning, Usage: ./go ${CONTAINER_NAME} [sshd|php73|php7.3|php74|php7.4|php81|php8.1|nginx|mysql57|mysql5.7|mysql80|mysql8.0|mariadb|redis|ubuntu]"
+       echo "Warning, Usage: ./go ${CONTAINER_NAME} [sshd|php73|php7.3|php74|php7.4|php81|php8.1|nginx|mysql80|mysql8.0|redis|ubuntu]"
        exit 1
         ;;
 esac

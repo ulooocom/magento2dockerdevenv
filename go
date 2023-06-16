@@ -25,7 +25,6 @@ fi
 #mage_local_nginx
 #mage_local_adminer
 #mage_local_php_fpm
-#mage_local_sshd
 #mage_local_php81_fpm
 #mage_local_mysql57
 #mage_local_mysql
@@ -36,12 +35,6 @@ fi
 #mage_local_sshd_ubuntu
 
 case ${CONTAINER_NAME} in
- s|sshd)
-       docker exec -ti mage_local_sshd sh
-        ;;
- s74|sshd74)
-       docker exec -ti mage_local_sshd74 sh
-        ;;
  php73|php7.3)
        docker exec -ti mage_local_php73_fpm sh
         ;;
@@ -63,11 +56,11 @@ case ${CONTAINER_NAME} in
  redis)
        docker exec -ti mage_local_redis sh
         ;;
- ubuntu)
+ s|sshd|sshd74|ubuntu)
        docker exec -ti mage_local_sshd_ubuntu bash
         ;;
  *)
-       echo "Warning, Usage: ./go ${CONTAINER_NAME} [sshd|php73|php7.3|php74|php7.4|php81|php8.1|nginx|mysql57|mysql5.7|mysql80|mysql8.0|redis|ubuntu]"
+       echo "Warning, Usage: ./go ${CONTAINER_NAME} [sshd|php73|php7.3|php74|php7.4|php81|php8.1|nginx|mysql80|mysql8.0|redis|ubuntu]"
        exit 1
         ;;
 esac
