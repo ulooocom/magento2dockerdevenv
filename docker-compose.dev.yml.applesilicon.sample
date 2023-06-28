@@ -82,7 +82,7 @@ services:
     command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
 
   mysql:
-    image: ${ALIYUN_CONTAINER_URL}/magento2:mysql-8.0.29-applesilicon
+    image: ${ALIYUN_CONTAINER_URL}/magento2:mysql-8.0.30-applesilicon
     container_name: ${COMPOSE_PROJECT_NAME}_mysql
     command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     restart: always
