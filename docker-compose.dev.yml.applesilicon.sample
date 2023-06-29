@@ -154,7 +154,6 @@ services:
       # sudo chown -R www-data:www-data authorized_keys
       # at the first time.
       - data-www:/data/www
-      - data-workspaces:/data/workspaces
     dns:
       - 223.5.5.5 #https://www.alidns.com/
       - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
@@ -165,5 +164,4 @@ volumes:
   mysql57-data:
   data-www:
   elasticsearch-data:
-  data-workspaces:
   ubuntu-www-data-ssh:
