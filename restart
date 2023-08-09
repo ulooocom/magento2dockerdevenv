@@ -3,4 +3,4 @@
 set -aeuo pipefail
 
 source ./.env
-./docker-compose up --force-recreate
+./docker-compose up -d --force-recreate
