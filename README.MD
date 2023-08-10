@@ -91,11 +91,11 @@ redis-cli -h redis
 drill baidu.com
 # drill
 # 部分环境因为开启了selinux会导致无法绑定22端口，需要改启动命令为：
-entrypoint: ["/usr/sbin/sshd", "-D", "-p", "2222"]
+entrypoint: ["sudo", "/usr/sbin/sshd", "-D", "-p", "2222"]
 # 信息输出
-entrypoint: ["/usr/sbin/sshd", "-De", "-p", "2222"]
+entrypoint: ["sudo", "/usr/sbin/sshd", "-De", "-p", "2222"]
 # 调式模式
-entrypoint: ["/usr/sbin/sshd", "-Dd", "-p", "2222"]
+entrypoint: ["sudo", "/usr/sbin/sshd", "-Dd", "-p", "2222"]
 ```
 
 ### 12. PHP7.3.27
