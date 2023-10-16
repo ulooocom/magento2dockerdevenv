@@ -26,7 +26,7 @@ ENV CRON_FILENAME ${CRON_FILENAME}
 # Add cron job
 ADD ./.docker/crond/etc/crontabs/www-data /etc/cron.d/www-data
 RUN chmod 0644 /etc/cron.d/www-data && crontab -u www-data /etc/cron.d/www-data
-
+# can't use USER www-data here, otherwise the crond file will be runned anymore
 WORKDIR /data/www
 
 #CMD ["crond", "-f"]
