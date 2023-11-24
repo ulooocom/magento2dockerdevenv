@@ -40,25 +40,6 @@ services:
       - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
       - 114.114.114.114
 
-  # 默认不再开启，可按需开起
-  # 注意开起后，需要调整 .docker/nginx/etc/conf.d/php73_fastcgi_backend.conf 的 第 2，4，7行注释
-  #php73-fpm:
-  #  image: ${ALIYUN_CONTAINER_URL}/magento2:php-7.3.33-fpm-applesilicon
-  #  container_name: ${COMPOSE_PROJECT_NAME}_php73_fpm
-  #  cap_add:
-  #    - SYS_PTRACE
-  #  restart: always
-  #  volumes:
-  #    - ./.docker/php73-fpm/etc/conf.d/php.local.ini:/usr/local/etc/php/php.ini
-  #    - ./.docker/php73-fpm/etc/conf.d/00-opcache-recommended.ini:/usr/local/etc/php/conf.d/00-opcache-recommended.ini
-  #    - ./.docker/php73-fpm/etc/php-fpm.d/www.local.conf:/usr/local/etc/php-fpm.d/www.conf:ro
-  #    - ./.docker/php73-fpm/log:/usr/local/log
-  #    - data-www:/data/www
-  #  dns:
-  #    - 223.5.5.5 #https://www.alidns.com/
-  #    - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
-  #    - 114.114.114.114
-
   nginx:
     image: ${ALIYUN_CONTAINER_URL}/magento2:nginx-1.25.1-alpine3.17-applesilicon
     container_name: ${COMPOSE_PROJECT_NAME}_nginx
@@ -88,8 +69,8 @@ services:
     restart: always
     security_opt:
       - seccomp:unconfined
-    ports:
-      - 3306:3306
+    #ports:
+    #  - 3306:3306
     volumes:
       - ./.docker/mysql/log:/var/log/mysql
       - mysql-data:/var/lib/mysql
