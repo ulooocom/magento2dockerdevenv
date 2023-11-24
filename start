@@ -5,7 +5,7 @@ echo "try to add +x rights for : chmod +x ./stop ./start ./restart ./remove ./go
 chmod +x ./stop ./start ./restart ./remove ./go ./upgrade ./docker-compose
 echo 'try to chmod 777 to  sudo ./.docker/mysql/log ./.docker/elasticsearch/data'
 echo 'If you do not have sudo right, please remove these lines(6-7) in ./start file'
-sudo chmod -R 777 ./.docker/mysql/log ./.docker/elasticsearch/data
+chmod -R 777 ./.docker/mysql/log ./.docker/elasticsearch/data
 
 # create the dotenv file if it doesn't exist
 if [ ! -f .env ]; then
