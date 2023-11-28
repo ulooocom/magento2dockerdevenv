@@ -80,15 +80,19 @@ cnpm -v
 #cnpm@7.1.1 (/usr/local/lib/node_modules/cnpm/lib/parse_argv.js)
 ifconfig -a
 # net-tools
-ip-addr
-# net-tools
 mysql -h mysql -u fusc -p
 # mysql-client
 redis-cli -h redis
 # redis-cli, redis pwd is redis
 drill baidu.com
 # drill
-traceroute
+dig baidu.com
+# dig
+ping baidu.com
+# ping
+nslookup baidu.com
+# nslookup
+traceroute baidu.com
 # traceroute
 # 部分环境因为开启了selinux会导致无法绑定22端口，需要改启动命令为：
 entrypoint: ["sudo", "/usr/sbin/sshd", "-D", "-p", "2222"]
