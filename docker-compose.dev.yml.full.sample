@@ -202,7 +202,7 @@ services:
 
 volumes:
   mysql-data:
-  mysql57-data:
+  #mysql57-data:
   data-www:
   data-rabbitmq:
   elasticsearch-data:
