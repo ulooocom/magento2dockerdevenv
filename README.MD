@@ -78,8 +78,6 @@ npm -v
 #8.1.3
 cnpm -v
 #cnpm@7.1.1 (/usr/local/lib/node_modules/cnpm/lib/parse_argv.js)
-apidoc -v
-#apidoc version: 0.51.1
 ifconfig -a
 # net-tools
 ipaddr
