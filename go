@@ -43,9 +43,6 @@ case ${CONTAINER_NAME} in
  nginx)
        docker exec -ti mage_local_nginx sh
         ;;
- mysql57|mysql5.7)
-       docker exec -ti mage_local_mysql57 sh
-        ;;
  mysql80|mysql8.0)
        docker exec -ti mage_local_mysql sh
         ;;
