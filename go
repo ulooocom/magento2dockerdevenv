@@ -49,7 +49,7 @@ case ${CONTAINER_NAME} in
  redis)
        docker exec -ti mage_local_redis sh
         ;;
- s|sshd|sshd74|ubuntu)
+ ubuntu)
        docker exec -ti mage_local_sshd_ubuntu bash
         ;;
  *)
