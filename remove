@@ -32,16 +32,16 @@ echo "***************************"
 
 # remove all images
 {
-    echo 'First Step: remove all image'
-    docker rmi -f $(docker image ls -q) 2> /dev/null
+    echo 'First Step: remove all image for this project'
+    docker rmi -f $(docker image ls -q | grep ${COMPOSE_PROJECT_NAME}) 2> /dev/null
 } || {
     # save log for exception
     echo "Try to remove all images were finished."
 }
 
 {  #try
-    echo 'Second Step: remove all containers'
-    docker container rm -f $(docker container ls -q) 2> /dev/null
+    echo 'Second Step: remove all containers for this project'
+    docker container rm -f $(docker container ls -q | grep ${COMPOSE_PROJECT_NAME}) 2> /dev/null
 } || {  #catch
     echo "all containers were removed."
 }
