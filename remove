@@ -46,24 +46,13 @@ echo "***************************"
     echo "all containers were removed."
 }
 
-# don't remove all volume anymore
-if [ ${ONLY_DELETE_CURRENT_PROJECT_VOLUME} == true ]; then
-    {  #try
-        echo 'Third Step : remove all current project volumes'
-        docker volume rm -f $(docker volume ls -q | grep ${COMPOSE_PROJECT_NAME}) 2> /dev/null
-    } || {  #catch
-        # save log for exception
-        echo "all current project volumes were removed."
-    }
-else
-    {  #try
-        echo 'Third Step : remove all volumes'
-        docker volume rm -f $(docker volume ls -q ) 2> /dev/null
-    } || {  #catch
-        # save log for exception
-        echo "all volumes were removed."
-    }
-fi
+{  #try
+    echo 'Third Step : remove all current project volumes'
+    docker volume rm -f $(docker volume ls -q | grep ${COMPOSE_PROJECT_NAME}) 2> /dev/null
+} || {  #catch
+    # save log for exception
+    echo "all current project volumes were removed."
+}
 
 { # try
     docker stop $(docker ps -a | grep ${COMPOSE_PROJECT_NAME} | grep "Exited" | awk '{print $1 }')  2> /dev/null
