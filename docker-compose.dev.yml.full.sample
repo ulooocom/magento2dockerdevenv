@@ -42,6 +42,26 @@ services:
       - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
       - 114.114.114.114
 
+  php82-fpm:
+    image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.2.16-fpm-alpine3.18
+    container_name: ${COMPOSE_PROJECT_NAME}_php82_fpm
+    cap_add:
+      - SYS_PTRACE
+    restart: always
+    ports:
+      - 9001:9001
+    volumes:
+      - ./.docker/php82-fpm/etc/conf.d/php.local.ini:/usr/local/etc/php/php.ini:ro
+      - ./.docker/php82-fpm/etc/conf.d/00-opcache-recommended.ini:/usr/local/etc/php/conf.d/00-opcache-recommended.ini
+      - ./.docker/php82-fpm/etc/php-fpm.d/www.local.conf:/usr/local/etc/php-fpm.d/www.conf:ro
+      #- ./.docker/php82-fpm/etc/conf.d/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./.docker/php82-fpm/log:/usr/local/log
+      - data-www:/data/www
+    dns:
+      - 223.5.5.5 #https://www.alidns.com/
+      - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
+      - 114.114.114.114
+
   nginx:
     image: ${ALIYUN_CONTAINER_URL}/magento2:nginx-1.25.1-alpine3.17
     container_name: ${COMPOSE_PROJECT_NAME}_nginx
@@ -80,22 +100,6 @@ services:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-
-  # 默认不再开启，可按需开起
-  #mysql57:
-  #  image: ${ALIYUN_CONTAINER_URL}/magento2:mysql-5.7.37
-  #  container_name: ${COMPOSE_PROJECT_NAME}_mysql57
-  #  command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-  #  restart: always
-  #  security_opt:
-  #    - seccomp:unconfined
-  #  volumes:
-  #    - ./.docker/mysql57/log:/var/log/mysql
-  #    - mysql57-data:/var/lib/mysql
-  #  environment:
-  #    - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-  #    - MYSQL_USER=${MYSQL_USER}
-  #    - MYSQL_PASSWORD=${MYSQL_PASSWORD}
 
   adminer:
     image: ${ALIYUN_CONTAINER_URL}/magento2:adminer-latest

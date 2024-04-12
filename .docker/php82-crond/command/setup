@@ -1,0 +1,56 @@
+#!/usr/bin/env sh
+
+source .env
+
+if [ -f /install.lock ]; then
+    echo "Already install, please remove /install.lock to reinstall if you want"
+    exit 1
+fi
+
+if [ -f /data/www/app/etc/env.php ]; then
+    mv /data/www/app/etc/env.php /data/www/app/etc/env.php.old
+fi
+if [ -f /data/www/app/etc/config.php ]; then
+    mv /data/www/app/etc/config.php /data/www/app/etc/config.php.old
+fi
+
+rm -rfv /data/www/var/generated/* /data/www/var/di/* /data/www/var/cache/* /data/www/var/page_cache/*
+
+CLEAN=
+if [ "$1" = "clean" ]; then
+  CLEAN="--cleanup-database"
+  echo "Setup with cleanup params"
+fi
+
+./bin/magento setup:install \
+            -vvv \
+            $CLEAN \
+            --no-ansi \
+            --no-interaction \
+            --key="$ENCRYPTION_KEY" \
+            --admin-user="$ADMIN_USERNAME" \
+            --admin-firstname="$ADMIN_FIRSTNAME" \
+            --admin-lastname="$ADMIN_LASTNAME" \
+            --admin-email="$ADMIN_EMAIL" \
+            --admin-password="$ADMIN_PASSWORD" \
+            --language="$LANGUAGE" \
+            --timezone="$TIMEZONE" \
+            --currency="$CURRENCY" \
+            --db-host=mysql \
+            --db-name="$MYSQL_DATABASE" \
+            --db-user=root \
+            --db-password="$MYSQL_ROOT_PASSWORD" \
+            --backend-frontname=admin \
+            --base-url="$BASE_URL"
+
+if [ $? -eq 0 ]; then
+  # chmod back to www-data when run this script in console
+  chown www-data:www-data -R /data/www/app/etc/env.php /data/www/app/etc/config.php /data/www/var/ /data/www/generated /data/www/pub/static /data/www/pub/media
+  chmod go+w -R /data/www/var /data/www/generated /data/www/pub/static /data/www/pub/media
+  chmod g+w /data/www /data/www/app/etc/config.php /data/www/app/etc/env.php
+
+  touch /install.lock
+
+  echo "Magento install completed"
+  su www-data -s /init
+fi
