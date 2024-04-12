@@ -17,9 +17,7 @@ source ./.env
 
 #try to create docker-compose.dev.yml if not
 if [ ! -f docker-compose.dev.yml ]; then
-  if [ ${RUN_TYPE} == 'FULL' ]; then
-    cp docker-compose.dev.yml.full.sample docker-compose.dev.yml
-  elif [ ${RUN_TYPE} == 'APPLESILICON' ]; then
+  if [ ${RUN_TYPE} == 'APPLESILICON' ]; then
     cp docker-compose.dev.yml.applesilicon.sample docker-compose.dev.yml
   else
     cp docker-compose.dev.yml.sample docker-compose.dev.yml
