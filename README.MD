@@ -54,15 +54,16 @@ chmod 777 -R .docker/php-fpm/log .docker/php81-fpm/log
 ### 10. log in to container
 ```
 # mac&linux
-./go [sshd|php74|php7.4|php81|php8.1|nginx|mysql57|mysql5.7|mysql80|mysql8.0|mariadb|redis|ubuntu]
+./go [sshd|php74|php7.4|php81|php8.1|php82|php8.2|nginx|mysql80|mysql8.0|redis|ubuntu]
 # windows
-./wingo [sshd|php74|php7.4|php81|php8.1|nginx|mysql57|mysql5.7|mysql80|mysql8.0|mariadb|redis|ubuntu]
+./wingo [sshd|php74|php7.4|php81|php8.1|php82|php8.2|nginx|mysql80|mysql8.0|mariadb|redis|ubuntu]
 ```
 
-### 11. sshd
+### 11. ubuntu
 ```shell
 # sshd configure, for phpStorm auto deployment when developing
-ssh -p 2222 www-data@127.0.0.1 ##passwd:qwer
+ssh -p 3333 www-data@127.0.0.1 ##passwd:fusc
+sudo chown -R www-data:www-data /data/www
 cd /data/www
 
 # tools in sshd container : 
@@ -117,6 +118,9 @@ http://php.demo/php81.php
 http://localhost:8899/ #root user : root ; password : fusc
 #visit mysql8.0, sever name : mysql
 #visit mysql5.7, sever name : mysql57
+# give right to fusc user
+GRANT ALL PRIVILEGES ON *.* TO 'fusc'@'%';
+FLUSH PRIVILEGES
 ```
 ### 15. ES HEAD
 ```shell

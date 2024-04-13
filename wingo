@@ -25,7 +25,6 @@ fi
 #mage_local_nginx
 #mage_local_adminer
 #mage_local_php_fpm
-#mage_local_sshd
 #mage_local_php81_fpm
 #mage_local_mysql
 #mage_local_redis
@@ -40,6 +39,9 @@ case ${CONTAINER_NAME} in
         ;;
  php81|php8.1)
        winpty docker exec -ti mage_local_php81_fpm sh
+        ;;
+ php82|php8.2)
+       winpty docker exec -ti mage_local_php82_fpm sh
         ;;
  nginx)
        winpty docker exec -ti mage_local_nginx sh

@@ -16,7 +16,7 @@ then
     echo "Confirmed. Try to log go this container : "${CONTAINER_NAME}
     echo "********************************************************************"
 else
-    CONTAINER_NAME='sshd'
+    CONTAINER_NAME='ubuntu'
     echo "********************************************************************"
     echo "Confirmed. Try to log go the default container : "${CONTAINER_NAME}
     echo "********************************************************************"
@@ -26,7 +26,6 @@ fi
 #mage_local_adminer
 #mage_local_php_fpm
 #mage_local_php81_fpm
-#mage_local_mysql57
 #mage_local_mysql
 #mage_local_redis
 #mage_local_es_head
@@ -39,6 +38,9 @@ case ${CONTAINER_NAME} in
         ;;
  php81|php8.1)
        docker exec -ti mage_local_php81_fpm sh
+        ;;
+ php82|php8.2)
+       docker exec -ti mage_local_php82_fpm sh
         ;;
  nginx)
        docker exec -ti mage_local_nginx sh
