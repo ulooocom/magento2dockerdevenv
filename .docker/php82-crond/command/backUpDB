@@ -1,4 +1,4 @@
-mysqldump -pmysql -ufusc -pfusc  ulooo_com > /data/www/proj-tool/storage/backup/ulooo_com.sql
+mysqldump -hmysql -ufusc -pfusc  ulooo_com > /data/www/proj-tool/storage/backup/ulooo_com.sql
 cd /data/www/proj-tool/storage/backup
 tar -zcf $(date +%Y%m%d%H)ulooocom.tar.gz *.sql
 rm -rf *.sql

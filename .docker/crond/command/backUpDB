@@ -1,4 +1,4 @@
-mysqldump -pmysql -ufusc -pfusc  proj_tool > /data/www/proj-tool/storage/backup/proj_tool.sql
+mysqldump -hmysql -ufusc -pfusc  proj_tool > /data/www/proj-tool/storage/backup/proj_tool.sql
 cd /data/www/proj-tool/storage/backup
 tar -zcf $(date +%Y%m%d%H)proj_tool.tar.gz *.sql
 rm -rf *.sql
