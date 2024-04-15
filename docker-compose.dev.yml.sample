@@ -175,6 +175,7 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME}_sshd_ubuntu
     #entrypoint: ["sudo", "/usr/sbin/sshd", "-De", "-p", "22"]
     ports:
+      - "52233:22"
       - "3333:22"
     restart: always
     volumes:
