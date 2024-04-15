@@ -17,6 +17,12 @@ ENTRYPOINT ["/sbin/tini", "--"]
 # copy PHP configuration to image
 COPY ./.docker/crond/etc/php/php.ini /usr/local/etc/php/php.ini
 
+# add commands
+RUN apk add mysql-client
+RUN mkdir /home/www-data/commands
+COPY ./.docker/crond/command/backUpDB /home/www-data/commands/backUpDB
+RUN chmod 0644 /home/www-data/commands/backUpDB && chmod +x /home/www-data/commands/backUpDB
+
 # add alias
 #RUN alias php="/usr/local/bin/php"
 RUN ln -s /usr/local/bin/php /usr/bin/php

@@ -1,0 +1,9 @@
+mysqldump -pmysql -ufusc -pfusc  ulooo_com > /data/www/proj-tool/storage/backup/ulooo_com.sql
+cd /data/www/proj-tool/storage/backup
+tar -zcf $(date +%Y%m%d%H)ulooocom.tar.gz *.sql
+rm -rf *.sql
+
+#rsync -azvP -e 'ssh -p 52233' /data/www/ulooo-com/storage/backup/$(date +"%Y%m%d")* xxx@xxx.xxx.com:/xxx/xxx
+
+#echo "rm -rf /data/www/ulooo-com/storage/backup/$(date +"%Y%m%d" -d'-30 day')*"
+#rm -rf /data/www/ulooo-com/storage/backup/$(date +"%Y%m%d" -d'-30 day')*

@@ -17,6 +17,12 @@ ENTRYPOINT ["/sbin/tini", "--"]
 # copy PHP configuration to image
 COPY ./.docker/crond/etc/php/php.ini /usr/local/etc/php/php.ini
 
+# add commands
+RUN apk add mysql-client
+RUN mkdir /home/www-data/commands
+COPY ./.docker/crond/command/backUpDB /home/www-data/commands/backUpDB
+RUN chmod 0644 /home/www-data/commands/backUpDB && chmod +x /home/www-data/commands/backUpDB
+
 # add alias
 #RUN alias php="/usr/local/bin/php"
 RUN ln -s /usr/local/bin/php /usr/bin/php
@@ -24,7 +30,7 @@ RUN ln -s /usr/local/bin/php /usr/bin/php
 ARG CRON_FILENAME=www-data
 ENV CRON_FILENAME ${CRON_FILENAME}
 # Add cron job
-ADD ./.docker/crond/etc/crontabs/www-data /etc/cron.d/www-data
+ADD ./.docker/php82-crond/etc/crontabs/www-data /etc/cron.d/www-data
 RUN chmod 0644 /etc/cron.d/www-data && crontab -u www-data /etc/cron.d/www-data
 # can't use USER www-data here, otherwise the crond file will be runned anymore
 WORKDIR /data/www

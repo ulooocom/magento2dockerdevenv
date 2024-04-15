@@ -4,3 +4,6 @@
 #~ LARAVEL START
 * * * * * /usr/local/bin/php /data/www/proj-tool/artisan schedule:run >> /data/www/proj-tool/storage/logs/laravel.cron.log 2>&1
 #~ LARAVEL END
+#~ BACKUP START
+01 4 * * * /home/www-data/commands/backUpDB >/dev/null 2>&1
+#~ BACKUP END
