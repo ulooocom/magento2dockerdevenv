@@ -1,6 +1,6 @@
-mysqldump -hmysql -ufusc -pfusc  ulooo_com > /data/www/proj-tool/storage/backup/ulooo_com.sql
-cd /data/www/proj-tool/storage/backup
-tar -zcf $(date +%Y%m%d%H)ulooocom.tar.gz *.sql
+mysqldump -hmysql -ufusc -pfusc  ulooocom-db > /data/www/ulooo-com/storage/backup/ulooo_com.sql
+cd /data/www/ulooo-com/storage/backup
+tar -zcf $(date +%Y%m%d%H)ulooo_com.tar.gz *.sql
 rm -rf *.sql
 
 #rsync -azvP -e 'ssh -p 52233' /data/www/ulooo-com/storage/backup/$(date +"%Y%m%d")* xxx@xxx.xxx.com:/xxx/xxx
