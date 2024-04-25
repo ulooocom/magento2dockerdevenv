@@ -21,8 +21,8 @@ services:
       - 114.114.114.114
 
   php81-fpm:
-    image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.1.27-fpm-alpine3.18
-    #image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.1.12-fpm-xdebug
+    #image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.1.28-fpm-alpine3.18
+    image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.1.28-fpm-alpine3.18-xdebug3.3.2 #for xdebug
     container_name: ${COMPOSE_PROJECT_NAME}_php81_fpm
     cap_add:
       - SYS_PTRACE
