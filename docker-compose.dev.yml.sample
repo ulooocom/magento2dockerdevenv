@@ -63,7 +63,7 @@ services:
       - 114.114.114.114
 
   nginx:
-    image: ${ALIYUN_CONTAINER_URL}/magento2:nginx-1.25.1-alpine3.17
+    image: ${ALIYUN_CONTAINER_URL}/magento2:nginx-1.26.0-alpine3.19
     container_name: ${COMPOSE_PROJECT_NAME}_nginx
     restart: always
     ports:
