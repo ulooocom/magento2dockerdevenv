@@ -54,6 +54,3 @@ docker-compose.dev.yml
 !.docker/nginx/etc/conf.d/magento/magento2modules.nginx.conf.sample
 !.docker/nginx/etc/conf.d/magento/php74.nginx.conf.sample
 !.docker/nginx/etc/conf.d/magento/php81.nginx.conf.sample
-
-/.docker/php82-fpm/log/www.access.log
-/.docker/php82-fpm/log/www.log.slow
