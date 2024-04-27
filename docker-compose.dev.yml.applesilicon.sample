@@ -43,8 +43,48 @@ services:
       - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
       - 114.114.114.114
 
+  php82-fpm:
+    image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.2.18-fpm-alpine3.18-applesilicon
+    container_name: ${COMPOSE_PROJECT_NAME}_php82_fpm
+    cap_add:
+      - SYS_PTRACE
+    restart: always
+    ports:
+      - 9002:9001
+    volumes:
+      - ./.docker/php82-fpm/etc/conf.d/php.local.ini:/usr/local/etc/php/php.ini:ro
+      - ./.docker/php82-fpm/etc/conf.d/00-opcache-recommended.ini:/usr/local/etc/php/conf.d/00-opcache-recommended.ini
+      - ./.docker/php82-fpm/etc/php-fpm.d/www.local.conf:/usr/local/etc/php-fpm.d/www.conf:ro
+      #- ./.docker/php82-fpm/etc/conf.d/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./.docker/php82-fpm/log:/usr/local/log
+      - data-www:/data/www
+    dns:
+      - 223.5.5.5 #https://www.alidns.com/
+      - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
+      - 114.114.114.114
+
+  php83-fpm:
+    image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.3.6-fpm-alpine3.18-applesilicon
+    container_name: ${COMPOSE_PROJECT_NAME}_php83_fpm
+    cap_add:
+      - SYS_PTRACE
+    restart: always
+    ports:
+      - 9030:9001
+    volumes:
+      - ./.docker/php83-fpm/etc/conf.d/php.local.ini:/usr/local/etc/php/php.ini:ro
+      - ./.docker/php83-fpm/etc/conf.d/00-opcache-recommended.ini:/usr/local/etc/php/conf.d/00-opcache-recommended.ini
+      - ./.docker/php83-fpm/etc/php-fpm.d/www.local.conf:/usr/local/etc/php-fpm.d/www.conf:ro
+      #- ./.docker/php83-fpm/etc/conf.d/docker-php-ext-xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./.docker/php83-fpm/log:/usr/local/log
+      - data-www:/data/www
+    dns:
+      - 223.5.5.5 #https://www.alidns.com/
+      - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
+      - 114.114.114.114
+
   nginx:
-    image: ${ALIYUN_CONTAINER_URL}/magento2:nginx-1.25.1-alpine3.17-applesilicon
+    image: ${ALIYUN_CONTAINER_URL}/magento2:nginx-1.26.0-alpine3.19-applesilicon
     container_name: ${COMPOSE_PROJECT_NAME}_nginx
     restart: always
     ports:
@@ -125,7 +165,7 @@ services:
       - ./.docker/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml
 
   sshd_ubuntu:
-    image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-ubuntu-22.04-applesilicon
+    image: ${ALIYUN_CONTAINER_URL}/magento2:sshd-ubuntu-22.04-applesilicon-20240424
     container_name: ${COMPOSE_PROJECT_NAME}_sshd_ubuntu
     #entrypoint: ["sudo", "/usr/sbin/sshd", "-De", "-p", "22"]
     ports:
