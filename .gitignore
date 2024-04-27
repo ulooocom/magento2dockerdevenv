@@ -36,12 +36,19 @@ docker-compose.dev.yml
 !.docker/php-fpm/log/.gitkeep
 .docker/php81-fpm/log/*
 !.docker/php81-fpm/log/.gitkeep
+.docker/php82-fpm/log/*
+!.docker/php82-fpm/log/.gitkeep
+.docker/php83-fpm/log/*
+!.docker/php83-fpm/log/.gitkeep
 
 .docker/nginx/etc/conf.d/*
 !.docker/nginx/etc/conf.d/default.confbak
 !.docker/nginx/etc/conf.d/php74_demo.conf
 !.docker/nginx/etc/conf.d/magento2modules.local.ulooo.com.conf
 !.docker/nginx/etc/conf.d/fastcgi_backend.conf
+!.docker/nginx/etc/conf.d/php81_fastcgi_backend.conf
+!.docker/nginx/etc/conf.d/php82_fastcgi_backend.conf
+!.docker/nginx/etc/conf.d/php83_fastcgi_backend.conf
 
 .docker/nginx/etc/conf.d/magento
 !.docker/nginx/etc/conf.d/magento/magento2modules.nginx.conf.sample
