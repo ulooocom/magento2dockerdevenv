@@ -2,7 +2,6 @@
 
 # Magento 2 CE/EE DOCKER ENVIRONMENT
 
-
 ### suggestion : 
 #### 1. China registry
 ```
@@ -102,18 +101,7 @@ entrypoint: ["sudo", "/usr/sbin/sshd", "-De", "-p", "2222"]
 # 调式模式
 entrypoint: ["sudo", "/usr/sbin/sshd", "-Dd", "-p", "2222"]
 ```
-
-### 12. PHP7.4.28
-```shell
-http://php.demo/php74.php
-```
-
-### 13. PHP8.1.17
-```shell
-http://php.demo/php81.php
-```
-
-### 14. ADMINER
+### 12. ADMINER
 ```shell
 http://localhost:8899/ #root user : root ; password : fusc
 #visit mysql8.0, sever name : mysql
@@ -122,22 +110,29 @@ http://localhost:8899/ #root user : root ; password : fusc
 GRANT ALL PRIVILEGES ON *.* TO 'fusc'@'%';
 FLUSH PRIVILEGES
 ```
-### 15. ES HEAD
+### 13. ES HEAD
 ```shell
 http://localhost:9100/ # check ES data
 ```
-### 16. 免密登录sftp
+### 14. 免密登录sftp
 ```shell
 in windows, need to go container(./wingo ubuntu) and sudo chmod 755 /home/www-data/.ssh and sudo chmod 644 /home/www-data/.ssh/authorized_keys and sudo chown -R www-data:www-data authorized_keys at the first time.
 ssh-copy-id -i ~/.ssh/id_rsa -p 3333 www-data@xx.xx.xx.xx # ubuntu container
 ```
-### 17. mq management
+### 15. mq management
 ```shell
 http://192.168.236.170:15672/
 fusc/fusc
 ```
 
-### 17. demo site
-echo "copy nginx demo site"
-echo "***************************"
+### 16. demo site
+```shell
+#copy nginx demo site
 docker cp ./.docker/nginx/www/demo mage_local_nginx:/data/www/
+http://php.demo/php74
+http://php.demo/php81
+http://php.demo/php82
+http://php.demo/php83
+
+```
+
