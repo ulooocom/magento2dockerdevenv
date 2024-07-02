@@ -136,3 +136,8 @@ ssh-copy-id -i ~/.ssh/id_rsa -p 3333 www-data@xx.xx.xx.xx # ubuntu container
 http://192.168.236.170:15672/
 fusc/fusc
 ```
+
+### 17. demo site
+echo "copy nginx demo site"
+echo "***************************"
+docker cp ./.docker/nginx/www/demo mage_local_nginx:/data/www/
