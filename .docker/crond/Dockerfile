@@ -1,4 +1,4 @@
-FROM registry.cn-shanghai.aliyuncs.com/ulooocom/magento2:php-8.1.29-fpm-alpine3.20
+FROM registry.cn-shanghai.aliyuncs.com/ulooocom/magento2:php-8.1.28-fpm-alpine3.18
 
 USER root
 #change apk source
@@ -12,7 +12,7 @@ RUN echo "Asia/Shanghai" >  /etc/timezone
 # https://github.com/krallin/tini
 RUN apk add tini
 # Tini is now available at /sbin/tini
-ENTRYPOINT ["/sbin/tini", "--"]
+ENTRYPOINT ["/sbin/tini", "-vvv", "--"]
 
 # copy PHP configuration to image
 COPY ./.docker/crond/etc/php/php.ini /usr/local/etc/php/php.ini
