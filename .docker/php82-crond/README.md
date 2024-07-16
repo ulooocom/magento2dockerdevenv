@@ -8,13 +8,13 @@ vi ./.docker/php82-crond/crontabs/www-data
 ## 2. How to build image
 ```apacheconf
 cd ./magent2dockerdevenv
-docker build -t registry.cn-shanghai.aliyuncs.com/ulooocom/magento2:php-8.2.20-fpm-alpine3.20-cron -f ./.docker/php82-crond/Dockerfile .
+docker build -t registry.cn-shanghai.aliyuncs.com/ulooocom/magento2:php-8.2.21-fpm-alpine3.19-cron -f ./.docker/php82-crond/Dockerfile .
 ```
 
 # 3. How to use in docker-compose
 ```apacheconf
   php82-cron:
-    image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.2.20-fpm-alpine3.20-cron
+    image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.2.21-fpm-alpine3.19-cron
     container_name: ${COMPOSE_PROJECT_NAME}_php82_cron
     cap_add:
       - SYS_PTRACE
