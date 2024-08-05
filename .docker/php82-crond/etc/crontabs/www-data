@@ -1,3 +1,4 @@
+MAILTO=""
 #~ MGENTO START 20fc2b402e4b6dede714fa7d9966f235408f45a34238d3a9fefcdab16194fb9e
 #* * * * * /usr/local/bin/php /data/www/ts-v21/bin/magento cron:run 2>&1 | grep -v "Ran jobs by schedule" >> /data/www/ts-v21/var/log/magento.cron.log
 #~ MAGENTO END 20fc2b402e4b6dede714fa7d9966f235408f45a34238d3a9fefcdab16194fb9e
