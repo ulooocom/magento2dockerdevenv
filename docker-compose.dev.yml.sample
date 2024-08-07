@@ -43,7 +43,7 @@ services:
       - 114.114.114.114
 
   php82-fpm:
-    image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.2.21-fpm-alpine3.19
+    image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.2.22-fpm-alpine3.19
     container_name: ${COMPOSE_PROJECT_NAME}_php82_fpm
     cap_add:
       - SYS_PTRACE
