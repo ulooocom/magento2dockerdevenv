@@ -42,6 +42,9 @@ case ${CONTAINER_NAME} in
  php82|php8.2)
        docker exec -ti mage_local_php82_fpm sh
         ;;
+ php83|php8.3)
+       docker exec -ti mage_local_php83_fpm sh
+        ;;
  nginx)
        docker exec -ti mage_local_nginx sh
         ;;
@@ -55,7 +58,7 @@ case ${CONTAINER_NAME} in
        docker exec -ti mage_local_sshd_ubuntu bash
         ;;
  *)
-       echo "Warning, Usage: ./go ${CONTAINER_NAME} [sshd|php74|php7.4|php81|php8.1|php82|php8.2|nginx|mysql80|mysql8.0|redis|ubuntu]"
+       echo "Warning, Usage: ./go ${CONTAINER_NAME} [sshd|php74|php7.4|php81|php8.1|php82|php8.2|php83|php8.3|nginx|mysql80|mysql8.0|redis|ubuntu]"
        exit 1
         ;;
 esac
