@@ -1,6 +1,6 @@
 #FROM node:latest
 FROM registry.cn-hangzhou.aliyuncs.com/ulooo/nodejs:16.14.2-alpine3.15
-MAINTAINER Robin Fu <robinfu@shtag.com>
+MAINTAINER Robin Fu <fusc@ulooo.com>
 ENV HOST 0.0.0.0
 RUN mkdir -p /data/www_frontend/nuxtjsdemoproj
 COPY ./www_frontend/nuxtjsdemoproj/ /data/www_frontend/nuxtjsdemoproj

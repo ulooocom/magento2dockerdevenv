@@ -3,4 +3,5 @@ set -aeuo pipefail
 source ./.env
 #sample, pwd is fusc
 # rsync -azvP -e 'ssh -p 2222' --exclude=".git" /Users/xxxxxx/data/www/magentoce243p1demo www-data@127.0.0.1:/data/www/
+# rsync -zar --exclude=".git" ./www /data/
 rsync -azvP -e 'ssh -p 2222' --exclude=".git" ./www www-data@127.0.0.1:/data/
