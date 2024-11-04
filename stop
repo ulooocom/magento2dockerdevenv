@@ -5,19 +5,6 @@ source ./.env
 
 echo "stop containers"
 ./docker-compose down --rmi local
-echo 'docker image ls -q'
-echo "***************************"
-docker images ls -q
-echo "***************************"
-echo 'docker container ls -q'
-echo "***************************"
-docker container ls -q
-echo "***************************"
-echo 'docker volume ls -q'
-echo "***************************"
-docker volume ls -q
-echo "***************************"
-
 
 { # try
     echo 'Second Step: remove all containers from ' ${COMPOSE_PROJECT_NAME}

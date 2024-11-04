@@ -19,17 +19,6 @@ echo "***************************"
 docker container ls -q
 echo "***************************"
 
-
-{  #try
-    echo 'docker volume ls -q | grep '${COMPOSE_PROJECT_NAME}
-    echo "***************************"
-    docker volume ls -q | grep ${COMPOSE_PROJECT_NAME}
-    echo "***************************"
-} || {  #catch
-    # do nothing here.
-    echo ''
-}
-
 # remove all images
 {
     echo 'First Step: remove all image for this project'
