@@ -21,7 +21,7 @@ services:
       - 114.114.114.114
 
   php81-fpm:
-    image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.1.29-fpm-alpine3.19
+    image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.1.30-fpm-alpine3.19
     #image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.1.28-fpm-alpine3.18-xdebug3.3.2 #for xdebug
     container_name: ${COMPOSE_PROJECT_NAME}_php81_fpm
     cap_add:
@@ -43,7 +43,7 @@ services:
       - 114.114.114.114
 
   php82-fpm:
-    image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.2.22-fpm-alpine3.19
+    image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.2.25-fpm-alpine3.19
     container_name: ${COMPOSE_PROJECT_NAME}_php82_fpm
     cap_add:
       - SYS_PTRACE
@@ -63,7 +63,7 @@ services:
       - 114.114.114.114
 
   php83-fpm:
-    image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.3.9-fpm-alpine3.19
+    image: ${ALIYUN_CONTAINER_URL}/magento2:php-8.3.13-fpm-alpine3.19
     container_name: ${COMPOSE_PROJECT_NAME}_php83_fpm
     cap_add:
       - SYS_PTRACE
@@ -208,23 +208,6 @@ services:
       - data-www:/data/www
     #extra_hosts:
     #  - "www.ulooo.com:100.100.100.100"
-    dns:
-      - 223.5.5.5 #https://www.alidns.com/
-      - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
-      - 114.114.114.114
-
-  code-server:
-    image: registry.cn-shanghai.aliyuncs.com/ulooocom/magento2:code-server
-    container_name: ${COMPOSE_PROJECT_NAME}_code_server
-    environment:
-      - DOCKER_USER:www-data
-    user: 1000:1000
-    ports:
-      - "9901:8080"
-    restart: always
-    volumes:
-      - ./.docker/code-server/.config:/home/coder/.config
-      - data-www:/data/www
     dns:
       - 223.5.5.5 #https://www.alidns.com/
       - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
