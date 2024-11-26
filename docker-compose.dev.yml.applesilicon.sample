@@ -180,8 +180,6 @@ services:
       # sudo chown -R www-data:www-data authorized_keys
       # at the first time.
       - data-www:/data/www
-    #extra_hosts:
-    #  - "www.ulooo.com:100.100.100.100"
     dns:
       - 223.5.5.5 #https://www.alidns.com/
       - 119.29.29.29 #https://www.dnspod.cn/Products/Public.DNS
